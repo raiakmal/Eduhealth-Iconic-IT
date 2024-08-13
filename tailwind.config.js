@@ -17,12 +17,12 @@ module.exports = {
       colors: {
         primary: '#242a2b',
         secondary: '#808080',
+        grey: '#e8f0f1',
         accent: {
           DEFAULT: '#1cbccf',
           secondary: '#18abbc',
           tertiery: '#90c6cd',
         },
-        grey: '#e8f0f1',
       },
       fontFamily: {
         primary: 'Poppins',
@@ -33,10 +33,6 @@ module.exports = {
       },
       backgroundImage: {
         services: 'url(../../assets/img/services/bg.svg)',
-        testimonials: 'url(../../assets/img/testimonials/bg.svg)',
-        departements: 'url(../../assets/img/departements/bg.svg)',
-        quoteLeft: 'url(../../assets/icons/testimonials/quote-left.svg)',
-        quoteRight: 'url(../../assets/icons/testimonials/quote-right.svg)',
       }
     },
   },

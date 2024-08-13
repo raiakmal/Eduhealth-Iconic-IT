@@ -1,47 +1,48 @@
- <!DOCTYPE html>
- <html lang="en">
- <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- css -->
-     <link rel="stylesheet" href="dist/output.css">
-     <!-- icon -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.min.css">
-      <!-- google font -->
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-      <!-- swiperjs -->
-       <link rel="stylesheet" href="/css/swiper-bundle.min.css">
- </head>
- <body>
+    <link rel="stylesheet" href="dist/output.css">
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.min.css">
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- swiperjs -->
+    <link rel="stylesheet" href="/css/swiper-bundle.min.css">
+</head>
+<body>
 
-  <!-- header -->
-   <header class="py-8 lg:pt-6 lg:pb-14">
+<!-- Header -->
+<header class="py-8 lg:pt-6 lg:pb-14">
     <div class="container mx-auto lg:relative flex flex-col lg:flex-row lg:justify-between gap-y-4 lg:gap-y-0">
-        <!-- logo -->
+
+        <!-- Logo -->
         <div class="flex justify-center lg:justify-normal">
             <a href="#">
                 <img src="./assets/img/header/logo.svg" alt="">
             </a>
         </div>
-    
+
         <div class="flex flex-col gap-y-4 lg:flex-row lg:items-center lg:gap-y-0 relative lg:z-50 lg:justify-between">
             <div class="flex items-center justify-between w-full lg:w-auto lg:mr-8">
                 <div class="flex items-center text-4xl font-extralight text-black">
                     <span id="time" class="mr-2">09:30</span>
                     <div class="text-2xl font-semibold text-gray-400" id="ampm"><sup>PM</sup></div>
                 </div>
-        
-                <!-- Toggle Light/Night Mode (Right-aligned in Mobile) -->
+
+                <!-- Toggle Dark Mode -->
                 <div class="relative inline-block text-left ml-auto lg:ml-4">
                     <div class="flex justify-end pr-4 lg:pr-0">
                         <button id="theme-toggle-button" class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gray-300 shadow-sm bg-white text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                            <i class="ri-sun-line text-xl"></i> <!-- Icon Sun -->
+                            <i class="ri-sun-line text-xl"></i>
                         </button>
                     </div>
-        
+
                     <div id="theme-menu" class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
                         <div class="py-1" role="none">
                             <a href="#" id="light-mode" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">
@@ -57,10 +58,8 @@
                     </div>
                 </div>
             </div>
-        
-            <button class="mt-4 lg:mt-0 lg:ml-auto px-6 py-2 bg-primary text-white rounded-lg shadow-lg hover:bg-primary-dark transition-all duration-300">Eksplore</button>
         </div>
-        
+
         <!-- Mobile Navbar -->
         <nav class="mnav bg-white fixed w-[300px] top-0 h-screen -left-[300px] shadow-2xl lg:hidden transition-all duration-300">
             <div class="mnav__close-btn bg-primary w-8 h-8 relative -right-full top-8 flex justify-center items-center rounded-tr-lg rounded-br-lg cursor-pointer transition-all">
@@ -86,7 +85,7 @@
                 </ul>
             </div>
         </nav>
-        
+
         <!-- Desktop Navbar -->
         <nav class="bg-white absolute w-full left-0 -bottom-[86px] shadow-custom1 h-16 rounded-[10px] hidden lg:flex lg:items-center lg:justify-between lg:px-[50px] z-10">
             <ul class="flex gap-x-4">
@@ -105,15 +104,117 @@
             </ul>
         </nav>
     </div>
-   </header>
+</header>
 
 
+    <!-- Hero -->
+    <section class="hero bg-grey py-12 lg:pt-12 lg:pb-0 overflow-hidden">
+        <div class="container mx-auto h-full">
+          <div class="flex flex-col lg:flex-row items-center justify-between h-full">
+            
+            <!-- Teks -->
+            <div class="hero__teks lg:w-[48%] text-center lg:text-left">
+              <!-- Badge -->
+              <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 mb-[26px] rounded-full mx-auto lg:mx-0">
+                <i class="ri-brain-line text-2xl text-accent"></i>
+                <div class="uppercase text-base font-medium text-[#9ab4b7] tracking-[2.24px]">Live your life</div>
+              </div>
+              <h1 class="h1 mb-6">Judul Besar</h1>
+              <p class="mb-[42px] md:max-w-lg">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Error et
+                non adipisci similique perferendis. Ipsam voluptatibus error
+                provident laborum, reiciendis necessitatibus, dignissimos dolorem
+                molestiae cum ipsum culpa, fugiat vitae! Tenetur.
+              </p>
+              <button class="btn btn-lg btn-accent mx-auto lg:mx-0">Expolre Now</button>
+            </div>
   
-    
-   
-   <script src="js/main.js"></script>
-   <script src="js/swiper-bundle.min.js"></script> 
-   <script src="js/scrollreveal.min.js"></script>
+            <!-- Gambar -->
+            <div class="hero__img hidden lg:flex max-w-[814px] self-end">
+              <img src="assets/img/hero/img.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Hero -->
+  
+      <!-- Stats -->
+      <section class="stats section">
+        <div class="container mx-auto">
+          <!-- Wrapper -->
+          <div class="flex flex-col lg:flex-row gap-y-6 justify-between">
+            <!-- Item 1 -->
+            <div class="stats__item flex-1 border-r flex flex-col items-center">
+              <div class="text-4xl lg:text-[64px] font-semibold text-accent-tertiery lg:mb-2">+1000</div>
+              <div>Pengunjung</div>
+            </div>
+            <!-- Item 2 -->
+            <div class="stats__item flex-1 border-r flex flex-col items-center">
+              <div class="text-4xl lg:text-[64px] font-semibold text-accent-tertiery lg:mb-2">+100</div>
+              <div>Organ Tubuh</div>
+            </div>
+            <!-- Item 3 -->
+            <div class="stats__item flex-1 flex flex-col items-center">
+              <div class="text-4xl lg:text-[64px] font-semibold text-accent-tertiery lg:mb-2">+10</div>
+              <div>Ahli</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Stats -->
+  
+      <!-- Services -->
+      <section class="services">
+        <!-- Background -->
+        <div class="bg-services bg-cover bg-no-repeat max-w-[1466px] mx-4 lg:mx-auto rounded-[20px] lg:pt-[70px] px-6 lg:px-0 relative h-[368px] flex items-center lg:items-start -z-10">
+          <div class="container mx-auto">
+            <!-- Teks -->
+            <div class="services__top flex items-center flex-col lg:flex-row lg:mb-[60px]">
+              <h2 class="h2 text-white flex-1 mb-4 lg:mb-0 text-center lg:text-left">Services</h2>
+              <p class="text-white flex-1 text-center lg:text-left max-w-2xl lg:max-w-none">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi magnam nisi doloribus tenetur voluptate libero in animi, sapiente unde, aspernatur officia.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Card Container -->
+        <div class="container mx-auto mt-8 lg:-mt-[144px]">
+          <!-- Card -->
+          <div class="grid xl:grid-cols-3 gap-5 px-8 xl:px-0">
+            <!-- Card Item 1 -->
+            <div class="services__item bg-white p-[30px] rounded-[10px] shadow-custom2 min-h-[288px] flex flex-col items-center text-center">
+              <!-- Card Item Icon -->
+              <div class="mb-[15px]">
+                <img src="assets/icons/services/icon-1.svg" alt="" />
+              </div>
+              <h3 class="h3 mb-[10px]">Title 1</h3>
+              <p class="font-light leading-normal max-w-[300px]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit, culpa?</p>
+            </div>
+            <!-- Card Item 2 -->
+            <div class="services__item bg-white p-[30px] rounded-[10px] shadow custom2 min-h-[288px] flex flex-col items-center text-center">
+              <!-- Card Item Icon -->
+              <div class="mb-[15px]">
+                <img src="assets/icons/services/icon-2.svg" alt="" />
+              </div>
+              <h3 class="h3 mb-[10px]">Title 1</h3>
+              <p class="font-light leading-normal max-w-[300px]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit,culpa?</p>
+            </div>
+            <!-- Card Item 3 -->
+            <div class="services__item bg-white p-[30px] rounded-[10px] shadow custom2 min-h-[288px] flex flex-col items-center text-center">
+              <!-- Card Item Icon -->
+              <div class="mb-[15px]">
+                <img src="assets/icons/services/icon-3.svg" alt="" />
+              </div>
+              <h3 class="h3 mb-[10px]">Title 1</h3>
+              <p class="font-light leading-normal max-w-[300px]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit,culpa?
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Services -->
 
- </body>
- </html>
+<script src="js/main.js"></script>
+<script src="js/swiper-bundle.min.js"></script>
+<script src="js/scrollreveal.min.js"></script>
+
+</body>
+</html>
