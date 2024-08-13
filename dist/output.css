@@ -1041,6 +1041,14 @@ video {
   letter-spacing: 2.24px;
 }
 
+.tracking-\[2\.px\] {
+  letter-spacing: 2.px;
+}
+
+.tracking-\[2\.25px\] {
+  letter-spacing: 2.25px;
+}
+
 .text-\[\#9ab4b7\] {
   --tw-text-opacity: 1;
   color: rgb(154 180 183 / var(--tw-text-opacity));
@@ -1475,6 +1483,16 @@ h6 {
   .lg\:px-\[50px\] {
     padding-left: 50px;
     padding-right: 50px;
+  }
+
+  .lg\:py-12 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .lg\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 
   .lg\:pb-0 {
