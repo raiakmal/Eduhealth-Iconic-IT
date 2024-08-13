@@ -22,6 +22,7 @@ module.exports = {
           secondary: '#18abbc',
           tertiery: '#90c6cd',
         },
+        grey: '#e8f0f1',
       },
       fontFamily: {
         primary: 'Poppins',
