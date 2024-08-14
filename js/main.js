@@ -1,3 +1,19 @@
+// Fix Navbar
+document.addEventListener('DOMContentLoaded', () => {
+    const navbar = document.getElementById('navbar');
+    const navbarDefaultClass = 'navbar-default';
+    const navbarFixedClass = 'navbar-fixed';
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) { // Atur angka sesuai kebutuhan, misalnya 50px
+            navbar.classList.remove(navbarDefaultClass);
+            navbar.classList.add(navbarFixedClass);
+        } else {
+            navbar.classList.remove(navbarFixedClass);
+            navbar.classList.add(navbarDefaultClass);
+        }
+    });
+});
 
 // Mobile Navbar
 const mobileNav = document.querySelector('.mnav');
@@ -28,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileNav.classList.add(navClosedClass);
         }
 
-        // Toggle icon panah
         closeBtnIcn.classList.toggle(arrowLeftClass);
         closeBtnIcn.classList.toggle(arrowRightClass);
     });
@@ -118,64 +133,129 @@ document.addEventListener('click', (e) => {
 });
 
 
-
+// 3D Model
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
+// Tambah OrbitControls
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+camera.position.set(0, 0, 5);
+
+// Tambah lights
+const ambientLight = new THREE.AmbientLight(0x404040, 1.5);
+scene.add(ambientLight);
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+directionalLight.position.set(5, 5, 5).normalize();
+scene.add(directionalLight);
+
+// Memuat 3D Model
 const loader = new THREE.GLTFLoader();
 loader.load('./assets/blend/organmanusia.glb', function (gltf) {
-    scene.add(gltf.scene);
-    camera.position.z = 5;
+  scene.add(gltf.scene);
 
-    const originalRotation = {
-        x: gltf.scene.rotation.x,
-        y: gltf.scene.rotation.y,
-        z: gltf.scene.rotation.z
-    };
+  originalRotation = gltf.scene.rotation.clone();
+  mixer = new THREE.AnimationMixer(gltf.scene);
 
-    let resetTimeout;
+  if (gltf.animations && gltf.animations.length) {
+    const action = mixer.clipAction(gltf.animations[0]);
+    action.play();
 
-    const resetRotation = () => {
-        gltf.scene.rotation.x = originalRotation.x;
-        gltf.scene.rotation.y = originalRotation.y;
-        gltf.scene.rotation.z = originalRotation.z;
-    };
+    mixer.timeScale = 2;
+  }
 
-    const animate = function () {
-        requestAnimationFrame(animate);
-        renderer.render(scene, camera);
-    };
-    animate();
+  const clock = new THREE.Clock();
 
-    const onUserInteraction = () => {
-        clearTimeout(resetTimeout);
-        resetTimeout = setTimeout(resetRotation, 2000); // Reset after 2 seconds of inactivity
-    };
+  // Loop Animasi
+  const animate = function () {
+    requestAnimationFrame(animate);
 
-    window.addEventListener('mousedown', onUserInteraction);
-    window.addEventListener('touchstart', onUserInteraction);
+    const delta = clock.getDelta();
+    if (mixer) mixer.update(delta);
 
-    // Adding rotation to show some interaction effect
-    window.addEventListener('mousemove', (event) => {
-        if (event.buttons > 0) {  // Check if mouse button is pressed
-            gltf.scene.rotation.y += 0.005 * event.movementX;
-            onUserInteraction();
-        }
-    });
-
-    window.addEventListener('touchmove', (event) => {
-        if (event.touches.length === 1) {  // Check if single touch
-            gltf.scene.rotation.y += 0.005;
-            onUserInteraction();
-        }
-    });
+    renderer.render(scene, camera);
+  };
+  animate();
 });
+
+
+let resetTimeout;
+
+// Reset Posisi Kamera
+function resetRotationAndCamera() {
+  if (resetTimeout) {
+    clearTimeout(resetTimeout);
+  }
+
+  resetTimeout = setTimeout(() => {
+    gsap.to(gltf.scene.rotation, {
+      x: originalRotation.x,
+      y: originalRotation.y,
+      z: originalRotation.z,
+      duration: 0.1,
+      ease: "power2.out"
+    });
+
+    gsap.to(camera.position, {
+      x: 0,
+      y: 0,
+      z: 5,
+      duration: 0.11,
+      ease: "power2.out",
+      onUpdate: function() {
+        camera.lookAt(scene.position);
+      }
+    });
+
+    controls.update();
+  }, 500);
+}
+
+controls.addEventListener('change', resetRotationAndCamera);
 
 window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
 });
+
+
+// Search
+let currentHighlightIndex = 0;
+
+        function searchAndHighlight() {
+            const searchTerm = document.getElementById('searchInput').value;
+            const content = document.getElementById('content');
+            const paragraphs = content.getElementsByTagName('p');
+            const regex = new RegExp(`(${searchTerm})`, 'gi');
+            
+            for (let paragraph of paragraphs) {
+                paragraph.innerHTML = paragraph.textContent;
+            }
+            
+            for (let paragraph of paragraphs) {
+                paragraph.innerHTML = paragraph.innerHTML.replace(regex, '<mark class="highlight">$1</mark>');
+            }
+            
+            currentHighlightIndex = 0;
+            const highlights = document.querySelectorAll('.highlight');
+            if (highlights.length > 0) {
+                highlights[currentHighlightIndex].classList.add('current-highlight');
+                highlights[currentHighlightIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        function navigateHighlights(direction) {
+            const highlights = document.querySelectorAll('.highlight');
+            if (highlights.length === 0) return;
+
+            highlights[currentHighlightIndex].classList.remove('current-highlight');
+
+            currentHighlightIndex = (currentHighlightIndex + direction + highlights.length) % highlights.length;
+
+            highlights[currentHighlightIndex].classList.add('current-highlight');
+            highlights[currentHighlightIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
