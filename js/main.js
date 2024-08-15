@@ -15,6 +15,84 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+
+let currentIndex = -1;
+let searchResults = [];
+
+function searchAndHighlight() {
+    // Reset highlights
+    resetHighlights();
+    
+    const searchInput = document.getElementById('searchInput').value;
+    if (searchInput.trim() === "") return;
+
+    const content = document.querySelector('body');
+    const regex = new RegExp(searchInput, 'gi');
+
+    // Traverse all child nodes and highlight text nodes
+    traverseAndHighlight(content, regex);
+
+    searchResults = document.querySelectorAll('.highlight');
+    currentIndex = -1;
+
+    if (searchResults.length > 0) {
+        navigateResults(1); // Automatically navigate to the first result
+    }
+}
+
+function traverseAndHighlight(node, regex) {
+    if (node.nodeType === 3) { // Text node
+        const text = node.textContent;
+        const newHTML = text.replace(regex, function(matched) {
+            return `<span class="highlight">${matched}</span>`;
+        });
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = newHTML;
+        while (tempDiv.firstChild) {
+            node.parentNode.insertBefore(tempDiv.firstChild, node);
+        }
+        node.parentNode.removeChild(node);
+    } else if (node.nodeType === 1 && node.childNodes && !/(script|style)/i.test(node.tagName)) { // Element node
+        for (let i = 0; i < node.childNodes.length; i++) {
+            traverseAndHighlight(node.childNodes[i], regex);
+        }
+    }
+}
+
+function navigateResults(direction) {
+    if (searchResults.length === 0) return;
+
+    // Remove the current highlight class
+    if (currentIndex !== -1) {
+        searchResults[currentIndex].classList.remove('current-highlight');
+    }
+
+    // Update index based on direction
+    currentIndex += direction;
+
+    if (currentIndex < 0) {
+        currentIndex = searchResults.length - 1;
+    } else if (currentIndex >= searchResults.length) {
+        currentIndex = 0;
+    }
+
+    // Scroll to the new current highlight and apply the current-highlight class
+    const currentResult = searchResults[currentIndex];
+    currentResult.classList.add('current-highlight');
+    currentResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function resetHighlights() {
+    const highlightedElements = document.querySelectorAll('.highlight');
+    highlightedElements.forEach(element => {
+        element.outerHTML = element.innerText; // Replace the highlighted span with just text
+    });
+
+    searchResults = [];
+    currentIndex = -1;
+}
+
 // Mobile Navbar
 const mobileNav = document.querySelector('.mnav');
 const closeBtn = document.querySelector('.mnav__close-btn');
@@ -222,40 +300,3 @@ window.addEventListener('resize', () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-
-// Search
-let currentHighlightIndex = 0;
-
-        function searchAndHighlight() {
-            const searchTerm = document.getElementById('searchInput').value;
-            const content = document.getElementById('content');
-            const paragraphs = content.getElementsByTagName('p');
-            const regex = new RegExp(`(${searchTerm})`, 'gi');
-            
-            for (let paragraph of paragraphs) {
-                paragraph.innerHTML = paragraph.textContent;
-            }
-            
-            for (let paragraph of paragraphs) {
-                paragraph.innerHTML = paragraph.innerHTML.replace(regex, '<mark class="highlight">$1</mark>');
-            }
-            
-            currentHighlightIndex = 0;
-            const highlights = document.querySelectorAll('.highlight');
-            if (highlights.length > 0) {
-                highlights[currentHighlightIndex].classList.add('current-highlight');
-                highlights[currentHighlightIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        }
-
-        function navigateHighlights(direction) {
-            const highlights = document.querySelectorAll('.highlight');
-            if (highlights.length === 0) return;
-
-            highlights[currentHighlightIndex].classList.remove('current-highlight');
-
-            currentHighlightIndex = (currentHighlightIndex + direction + highlights.length) % highlights.length;
-
-            highlights[currentHighlightIndex].classList.add('current-highlight');
-            highlights[currentHighlightIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
