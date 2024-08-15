@@ -1,22 +1,54 @@
-// Fix Navbar
+// Navbar
 document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.getElementById('navbar');
     const navbarDefaultClass = 'navbar-default';
     const navbarFixedClass = 'navbar-fixed';
+    const mobileNav = document.querySelector('.mnav');
+    const closeBtn = document.querySelector('.mnav__close-btn');
+    const closeBtnIcn = document.querySelector('.mnav__close-btn-icon');
+    const navOpenedClass = 'left-0';
+    const navClosedClass = '-left-[300px]';
+    const arrowLeftClass = 'ri-arrow-left-s-line';
+    const arrowRightClass = 'ri-arrow-right-s-line';
 
+    // Fix Navbar
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) { // Atur angka sesuai kebutuhan, misalnya 50px
-            navbar.classList.remove(navbarDefaultClass);
-            navbar.classList.add(navbarFixedClass);
+        if (isDesktop()) {
+            if (window.scrollY > 50) {
+                navbar.classList.remove(navbarDefaultClass);
+                navbar.classList.add(navbarFixedClass);
+            } else {
+                navbar.classList.remove(navbarFixedClass);
+                navbar.classList.add(navbarDefaultClass);
+            }
         } else {
             navbar.classList.remove(navbarFixedClass);
             navbar.classList.add(navbarDefaultClass);
         }
     });
+
+    // Fungsi cek lebar layar
+    function isDesktop() {
+        return window.innerWidth > 767;
+    }
+
+    // Mobile Navbar
+    closeBtn.addEventListener('click', () => {
+        if (mobileNav.classList.contains(navClosedClass)) {
+            mobileNav.classList.remove(navClosedClass);
+            mobileNav.classList.add(navOpenedClass);
+        } else {
+            mobileNav.classList.remove(navOpenedClass);
+            mobileNav.classList.add(navClosedClass);
+        }
+
+        closeBtnIcn.classList.toggle(arrowLeftClass);
+        closeBtnIcn.classList.toggle(arrowRightClass);
+    });
 });
 
 
-
+// Serach
 let currentIndex = -1;
 let searchResults = [];
 
@@ -93,40 +125,7 @@ function resetHighlights() {
     currentIndex = -1;
 }
 
-// Mobile Navbar
-const mobileNav = document.querySelector('.mnav');
-const closeBtn = document.querySelector('.mnav__close-btn');
-const closeBtnIcn = document.querySelector('.mnav__close-btn-icon');
-
-const navOpenedClass = 'left-0';
-const navClosedClass = '-left-[300px]';
-const arrowLeftClass = 'ri-arrow-left-s-line';
-const arrowRightClass = 'ri-arrow-right-s-line';
-
-document.addEventListener('DOMContentLoaded', () => {
-    const mobileNav = document.querySelector('.mnav');
-    const closeBtn = document.querySelector('.mnav__close-btn');
-    const closeBtnIcn = document.querySelector('.mnav__close-btn-icon');
-
-    const navOpenedClass = 'left-0';
-    const navClosedClass = '-left-[300px]';
-    const arrowLeftClass = 'ri-arrow-left-s-line';
-    const arrowRightClass = 'ri-arrow-right-s-line';
-
-    closeBtn.addEventListener('click', () => {
-        if (mobileNav.classList.contains(navClosedClass)) {
-            mobileNav.classList.remove(navClosedClass);
-            mobileNav.classList.add(navOpenedClass);
-        } else {
-            mobileNav.classList.remove(navOpenedClass);
-            mobileNav.classList.add(navClosedClass);
-        }
-
-        closeBtnIcn.classList.toggle(arrowLeftClass);
-        closeBtnIcn.classList.toggle(arrowRightClass);
-    });
-});
-
+// Jam
 function updateTime() {
     const timeDisplay = document.getElementById("time");
     const ampmDisplay = document.getElementById("ampm").querySelector('sup');

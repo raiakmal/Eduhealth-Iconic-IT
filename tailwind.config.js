@@ -33,7 +33,7 @@ module.exports = {
         custom2: '0px 0px 30px 0px rgba(8, 73, 81, 0.06)',
       },
       backgroundImage: {
-        services: 'url(../../assets/img/services/bg.svg)',
+        sorotan: 'url(../../assets/img/sorotan/bg.svg)',
       }
     },
   },

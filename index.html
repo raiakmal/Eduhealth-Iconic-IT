@@ -3,58 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- css -->
+    <title>EduHealth</title>
+    <!-- CSS -->
     <link rel="stylesheet" href="dist/output.css">
-    <!-- icon -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Remix Icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.min.css">
-    <!-- google font -->
+
+    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- swiperjs -->
+
+    <!-- Swiperjs -->
     <link rel="stylesheet" href="/css/swiper-bundle.min.css">
+
     <!-- Model Viewer -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    
-    <style>
-        .highlight {
-            background-color: yellow;
-        }
-        .current-highlight {
-            background-color: orange;
-        }
-        .bg-grey {
-            background-color: #f0f0f0;
-        }
-        .navigation-buttons {
-            margin-top: 10px;
-        }
-
-.navbar-default {
-    position: absolute;
-    bottom: -86px;
-    transition: all 0.3s ease;
-}
-
-.navbar-fixed {
-    position: fixed;
-    top: 0;
-    bottom: auto;
-    transition: all 0.3s ease;
-    width: 100%;
-    z-index: 10;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5)
-}
-
-    </style>
-    
 </head>
 <body id="content">
 
 <!-- Header -->
 <header class="py-8 lg:pt-6 lg:pb-14">
     <div class="container mx-auto lg:relative flex flex-col lg:flex-row lg:justify-between gap-y-4 lg:gap-y-0">
+
         <!-- Logo -->
         <div class="flex justify-center lg:justify-normal">
             <a href="#">
@@ -105,53 +78,57 @@
                 </a>
                 <ul class="flex flex-col gap-y-5">
                     <li>
-                        <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Home</a>
+                        <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Beranda</a>
                     </li>
                     <li>
                         <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Definisi</a>
                     </li>
                     <li>
-                        <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Explore</a>
+                        <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Eksplor</a>
                     </li>
                     <li>
-                        <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Home</a>
+                        <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Tentang</a>
                     </li>
                     <li>
-                        <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Contact</a>
+                        <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Kontak</a>
                     </li>
                 </ul>
             </div>
         </nav>
 
         <!-- Desktop Navbar -->
-        <nav id="navbar" class="navbar-default bg-white w-full left-0 shadow-custom1 h-16 rounded-[10px] lg:flex lg:items-center lg:justify-between lg:px-[50px]">
+        <nav id="navbar" class="hidden navbar-default bg-white w-full left-0 shadow-custom1 h-16 rounded-[10px] lg:flex lg:items-center lg:justify-between lg:px-[50px]">
             <ul class="flex gap-x-4">
+                
                 <li>
-                    <a href="#" class="border-r pr-4 text-secondary hover:text-accent transition-all duration-300">Home</a>
+                    <a href="#" class="border-r pr-4 text-secondary hover:text-accent transition-all duration-300">Beranda</a>
                 </li>
                 <li>
                     <a href="#" class="border-r pr-4 text-secondary hover:text-accent transition-all duration-300">Definisi</a>
                 </li>
                 <li>
-                    <a href="#" class="border-r pr-4 text-secondary hover:text-accent transition-all duration-300">Explore</a>
+                    <a href="#" class="border-r pr-4 text-secondary hover:text-accent transition-all duration-300">Eksplor</a>
                 </li>
                 <li>
-                    <a href="#" class="border-r pr-4 text-secondary hover:text-accent transition-all duration-300">Home</a>
+                    <a href="#" class="border-r pr-4 text-secondary hover:text-accent transition-all duration-300">Tentang</a>
                 </li>
                 <li>
-                    <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Contact</a>
+                    <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Kontak</a>
                 </li>
             </ul>
-            <!-- Search Feature -->
+            <!-- Search -->
             <div class="flex items-center">
                 <input type="text" id="searchInput" placeholder="Cari Kata" class="bg-grey text-secondary placeholder-secondary rounded-[5px] px-2 py-1 focus:outline-none">
                 <i class="ri-search-line text-secondary ml-2 hover:text-accent transition-all duration-300" onclick="searchAndHighlight()"></i>
-                <button id="prevButton" class="ml-2 px-2 py-1 bg-secondary text-white rounded-[5px]" onclick="navigateResults(-1)">⬆️</button>
-                <button id="nextButton" class="ml-2 px-2 py-1 bg-secondary text-white rounded-[5px]" onclick="navigateResults(1)">⬇️</button>
+            </div>
+            <div class="navigation-buttons">
+                <button onclick="navigateHighlights(-1)">Previous</button>
+                <button onclick="navigateHighlights(1)">Next</button>
             </div>
         </nav>
     </div>
 </header>
+<!-- End Header -->
 
 <!-- Hero -->
 <section id="hero-section" class="hero bg-grey py-12 lg:py-12 lg:pb-0 overflow-hidden">
@@ -163,21 +140,17 @@
             <!-- Badge -->
             <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 mb-[26px] rounded-full mx-auto lg:mx-0">
                 <i class="ri-brain-line text-2xl text-accent"></i>
-                <div class="uppercase text-base font-medium text-[#9ab4b7] tracking-[2.24px]">Discover Every Detail</div>
+                <div class="uppercase text-base font-medium text-[#9ab4b7] tracking-[2.24px]">Temukan setiap detailnya</div>
             </div>
               <h1 class="h1 mb-6">Eksplorasi Anatomi Tubuh Manusia</h1>
               <p class="mb-[42px] md:max-w-lg">Jelajahi anatomi manusia dengan pendekatan menyeluruh, menggabungkan visual yang memukau dan informasi yang jelas untuk mendalami setiap bagian tubuh secara efisien.</p>
-              <button class="btn btn-lg btn-accent mx-auto lg:mx-0">Eksplore sekarang</button>
+              <button class="btn btn-lg btn-accent mx-auto lg:mx-0">Eksplor sekarang</button>
         </div>
   
-        <!-- Gambar -->
-        <!-- <div class="hero__img hidden lg:flex max-w-[814px] self-end">
-            <img src="assets/img/hero/img.png" alt="" />
-        </div> -->
+        <!-- Gambar 3D -->
         <div class="flex justify-center lg:col-span-1">
             <model-viewer src="assets/blend/organmanusia.glb" alt="3D Model" auto-rotate camera-controls style="height: 600px; width: 600px;" ></model-viewer>
         </div>
-        
         </div>
     </div>
 </section>
@@ -186,36 +159,35 @@
 <!-- Stats -->
 <section class="stats section">
     <div class="container mx-auto">
-        <!-- Wrapper -->
         <div class="flex flex-col lg:flex-row gap-y-6 justify-between">
             <!-- Item 1 -->
             <div class="stats__item flex-1 border-r flex flex-col items-center">
-              <div class="text-4xl lg:text-[64px] font-semibold text-accent-tertiery lg:mb-2">+1000</div>
-              <div>Pengunjung</div>
+              <div class="text-4xl lg:text-[64px] font-semibold text-accent-tertiery lg:mb-2">78</div>
+              <div>Organ Tubuh</div>
             </div>
             <!-- Item 2 -->
             <div class="stats__item flex-1 border-r flex flex-col items-center">
-              <div class="text-4xl lg:text-[64px] font-semibold text-accent-tertiery lg:mb-2">+100</div>
-              <div>Organ Tubuh</div>
+              <div class="text-4xl lg:text-[64px] font-semibold text-accent-tertiery lg:mb-2">11</div>
+              <div>Sistem Organ</div>
             </div>
             <!-- Item 3 -->
             <div class="stats__item flex-1 flex flex-col items-center">
-              <div class="text-4xl lg:text-[64px] font-semibold text-accent-tertiery lg:mb-2">+10</div>
-              <div>Ahli</div>
+              <div class="text-4xl lg:text-[64px] font-semibold text-accent-tertiery lg:mb-2">5</div>
+              <div>Organ Vital</div>
             </div>
         </div>
     </div>
 </section>
 <!-- End Stats -->
   
-<!-- Services -->
-<section class="services"  id="content">
+<!-- Sorotan -->
+<section class="sorotan"  id="content">
     <!-- Background -->
-     <div class="bg-services bg-cover bg-no-repeat max-w-[1466px] mx-4 lg:mx-auto rounded-[20px] lg:pt-[70px] px-6 lg:px-0 relative h-[368px] flex items-center lg:items-start -z-10">
+     <div class="bg-sorotan bg-cover bg-no-repeat max-w-[1466px] mx-4 lg:mx-auto rounded-[20px] lg:pt-[70px] px-6 lg:px-0 relative h-[368px] flex items-center lg:items-start -z-10">
         <div class="container mx-auto">
             <!-- Teks -->
-            <div class="services__top flex items-center flex-col lg:flex-row lg:mb-[60px]">
-              <h2 class="h2 text-white flex-1 mb-4 lg:mb-0 text-center lg:text-left">Services</h2>
+            <div class="sorotan__top flex items-center flex-col lg:flex-row lg:mb-[60px]">
+              <h2 class="h2 text-white flex-1 mb-4 lg:mb-0 text-center lg:text-left">Sorotan</h2>
               <p class="text-white flex-1 text-center lg:text-left max-w-2xl lg:max-w-none">Kenali tubuh Anda lebih dalam melalui platform belajar anatomi manusia yang interaktif, lengkap dengan visual dan penjelasan komprehensif.</p>
             </div>
         </div>
@@ -225,7 +197,7 @@
         <!-- Card -->
          <div class="grid xl:grid-cols-3 gap-5 px-8 xl:px-0">
             <!-- Card Item 1 -->
-             <div class="services__item bg-white p-[30px] rounded-[10px] shadow-custom2 min-h-[288px] flex flex-col items-center text-center">
+             <div class="sorotan__item bg-white p-[30px] rounded-[10px] shadow-custom2 min-h-[288px] flex flex-col items-center text-center">
                 <!-- Card Item Icon -->
                  <div class="mb-[15px]">
                     <img src="assets/blend/organ/organ.png" alt="" />
@@ -234,7 +206,7 @@
                 <p class="font-light leading-normal max-w-[300px]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit, culpa?</p>
             </div>
             <!-- Card Item 2 -->
-            <div class="services__item bg-white p-[30px] rounded-[10px] shadow custom2 min-h-[288px] flex flex-col items-center text-center">
+            <div class="sorotan__item bg-white p-[30px] rounded-[10px] shadow custom2 min-h-[288px] flex flex-col items-center text-center">
               <!-- Card Item Icon -->
               <div class="mb-[15px]">
                 <img src="assets/blend/organ/sel.png" alt="" />
@@ -243,10 +215,10 @@
               <p class="font-light leading-normal max-w-[300px]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit,culpa?</p>
             </div>
             <!-- Card Item 3 -->
-            <div class="services__item bg-white p-[30px] rounded-[10px] shadow custom2 min-h-[288px] flex flex-col items-center text-center">
+            <div class="sorotan__item bg-white p-[30px] rounded-[10px] shadow custom2 min-h-[288px] flex flex-col items-center text-center">
               <!-- Card Item Icon -->
               <div class="mb-[15px]">
-                <img src="assets/icons/services/icon-3.svg" alt="" />
+                <img src="assets/icons/sorotan/icon-3.svg" alt="" />
               </div>
               <h3 class="h3 mb-[10px]">Title 1</h3>
               <p class="font-light leading-normal max-w-[300px]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit,culpa?
@@ -255,8 +227,7 @@
           </div>
     </div>
 </section>
-
-<!-- End Services -->
+<!-- End Sorotan -->
     
 <!-- Spesial -->
 <section class="special-features bg-white py-16 lg:py-12 lg:mt-20">
@@ -271,7 +242,7 @@
             <!-- Teks -->
             <div class="lg:col-span-2 flex flex-col justify-center text-center lg:text-left">
                 <h3 class="text-xl font-bold text-accent-secondary mb-4">Visualisasi Realistis</h3>
-                <h4 class="text-xl lg:text-3xl font-bold mb-6">Nikmati visualisasi anatomi dengan kualitas gambar yang tinggi!</h4>
+                <h4 class="text-xl lg:text-3xl font-bold mb-6">Nikmati visualisasi anatomi dengan kualitas gambar yang tinggi</h4>
                 <p class="text-secondary mb-6">Detail yang akurat, setiap bagian tubuh ditampilkan dengan jelas untuk memberikan pengalaman belajar yang mendalam.</p>
                 <a href="#" class="text-accent hover:text-accent-secondary">Selengkapnya →</a>
             </div>
@@ -290,8 +261,8 @@
             </div>
             <!-- Teks -->
             <div class="lg:col-span-2 flex flex-col justify-center text-center lg:text-left order-1 lg:order-2">
-                <h3 class="text-xl font-bold text-accent-secondary mb-4">Fokus pada Keunggulan Teknologi 3D</h3>
-                <h4 class="text-xl lg:text-3xl font-bold mb-6">Revolusi Pembelajaran Anatomi dengan Teknologi 3D</h4>
+                <h3 class="text-xl font-bold text-accent-secondary mb-4">Keunggulan Teknologi 3D</h3>
+                <h4 class="text-xl lg:text-3xl font-bold mb-6">Revolusi pembelajaran anatomi dengan teknologi 3D</h4>
                 <p class="text-secondary mb-6">Tinggalkan buku teks anatomi yang membosankan! Dengan model 3D kami, kamu akan mendapatkan pengalaman belajar yang lebih nyata dan mendalam. Visualisasi 3D yang sangat detail memungkinkanmu untuk melihat struktur tubuh manusia dari segala sudut. Rasakan sendiri bagaimana teknologi 3D mengubah cara kita mempelajari tubuh manusia.</p>
                 <a href="#" class="text-accent hover:text-accent-secondary">Selengkapnya →</a>
             </div>
@@ -301,8 +272,8 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center p-6 m-6">
             <!-- Teks -->
             <div class="lg:col-span-2 flex flex-col justify-center text-center lg:text-left">
-                <h3 class="text-xl font-bold text-accent-secondary mb-4">Fokus pada Manfaat untuk Berbagai Kalangan</h3>
-                <h4 class="text-xl lg:text-3xl font-bold mb-6">Untuk Siapa Saja Aplikasi Ini?</h4>
+                <h3 class="text-xl font-bold text-accent-secondary mb-4">Manfaat untuk Berbagai Kalangan</h3>
+                <h4 class="text-xl lg:text-3xl font-bold mb-6">Untuk siapa saja aplikasi ini?</h4>
                 <p class="text-secondary mb-6">Aplikasi kami cocok untuk berbagai kalangan, mulai dari siswa sekolah, mahasiswa kedokteran, hingga profesional kesehatan.</p>
                  <a href="#" class="text-accent hover:text-accent-secondary">Selengkapnya →</a>
             </div>
@@ -315,67 +286,66 @@
   </section>
 <!-- End Spesial  -->
   
+<!-- Footer -->
 <footer class="bg-white">
-    <div class="container mx-auto mt-10 px-6 py-8">
-        <div class="flex flex-col md:flex-row md:justify-center md:space-x-10 space-y-8 md:space-y-0 text-center md:text-left">
-            <!-- Logo dan Deskripsi -->
-            <div class="lg:w-1/4 md:w-1/2 w-full md:mx-auto">
-                <h1 class="text-xl md:text-3xl font-bold mb-4"><span class="text-accent">EDUHEALTH</span></h1>
-                <p class="mt-2 text-md mb-6">Website tentang anatomi tubuh manusia. Untuk mengikuti lomba ICONIC IT 2024 diselenggarakan oleh Informatika UNSIL.</p>
-                <div class="flex justify-center space-x-4 mb-6">
-                    <a href="https://github.com/" target="_blank"><img src="assets/icons/footer/logoGithub.png" alt="GitHub Logo" class="h-10" /></a>
-                    <a href="https://github.com/" target="_blank"><img src="assets/icons/footer/logoWA.png" alt="WhatsApp Logo" class="h-10" /></a>
-                </div>
-                <p>&copy;2024 EduHealth, Inc. All rights reserved.</p>
-            </div>
-
-            <!-- Menu Eduhealth -->
-            <div class="lg:w-1/4 md:w-1/2 w-full md:mx-auto">
-                <h2 class="text-lg font-bold mb-6">Menu Eduhealth</h2>
-                <nav class="list-none space-y-6">
-                    <li><a href="index.html" class="hover:text-accent">Beranda</a></li>
-                    <li><a href="index.html" class="hover:text-accent">Definisi</a></li>
-                    <li><a href="index.html" class="hover:text-accent">Eksplor</a></li>
-                    <li><a href="index.html" class="hover:text-accent">Tentang</a></li>
-                    <li><a href="index.html" class="hover:text-accent">Kontak</a></li>
-                </nav>
-            </div>
-
-            <!-- Kategori -->
-            <div class="lg:w-1/4 md:w-1/2 w-full md:mx-auto">
-                <h2 class="text-lg font-bold mb-6">Kategori</h2>
-                <nav class="list-none space-y-6">
-                    <li><a href="anatomi.html" class="hover:text-accent">Sistem Pernapasan</a></li>
-                    <li><a href="anatomi.html" class="hover:text-accent">Sistem Pencernaan</a></li>
-                    <li><a href="anatomi.html" class="hover:text-accent">Sistem Ekskresi</a></li>
-                    <li><a href="anatomi.html" class="hover:text-accent">Sistem Reproduksi</a></li>
-                    <li><a href="anatomi.html" class="hover:text-accent">Sistem Saraf</a></li>
-                </nav>
-            </div>
-
-            <!-- Hubungi Kami -->
-            <div class="lg:w-1/4 md:w-1/2 w-full md:mx-auto">
-                <h2 class="text-lg font-bold mb-3">Hubungi Kami</h2>
-                <nav class="list-none space-y-4">
-                    <li><i class="ri-mail-line text-accent text-xl"></i> eduhealth@gmail.com</li>
-                    <li><i class="ri-phone-line text-accent text-xl"></i> 0853 2345 6789</li>
-                    <li><i class="ri-map-pin-line text-accent text-xl"></i> Mugarsari, Kec. Tamansari, Kota Tasikmalaya, Jawa Barat 46196</li>
-                </nav>
-            </div>
+    <div class="container mx-auto mt-4 px-6 py-8">
+      <div class="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-10">
+        <!-- Logo dan Deskripsi -->
+        <div class="lg:w-1/4 md:w-1/2">
+          <h1 class="text-xl md:text-3xl font-bold mb-4"><span class="text-accent">EDUHEALTH</span></h1>
+          <p class="mt-2 text-md mb-6">Website tentang anatomi tubuh manusia. Untuk mengikuti lomba ICONIC IT 2024 diselenggarakan oleh Informatika UNSIL.</p>
+          <div class="flex space-x-4 mb-6">
+            <a href="https://github.com/" target="_blank"><img src="assets/icons/footer/gh.png" alt="GitHub Logo" class="h-10" /></a>
+            <a href="https://github.com/" target="_blank"><img src="assets/icons/footer/wa.png" alt="WhatsApp Logo" class="h-10" /></a>
+          </div>
         </div>
+        
+        <!-- Menu Eduhealth -->
+        <div class="lg:w-1/4 md:w-1/2 w-full">
+          <h2 class="text-lg font-bold mb-6">Menu Eduhealth</h2>
+          <nav class="list-none space-y-6">
+            <li><a href="index.html" class="hover:text-accent">Beranda</a></li>
+            <li><a href="index.html" class="hover:text-accent">Definisi</a></li>
+            <li><a href="index.html" class="hover:text-accent">Eksplor</a></li>
+            <li><a href="index.html" class="hover:text-accent">Tentang</a></li>
+            <li><a href="index.html" class="hover:text-accent">Kontak</a></li>
+          </nav>
+        </div>
+        
+        <!-- Kategori -->
+        <div class="lg:w-1/4 md:w-1/2 w-full">
+          <h2 class="text-lg font-bold mb-6">Kategori</h2>
+          <nav class="list-none space-y-6">
+            <li><a href="anatomi.html" class="hover:text-accent">Sistem Pernapasan</a></li>
+            <li><a href="anatomi.html" class="hover:text-accent">Sistem Pencernaan</a></li>
+            <li><a href="anatomi.html" class="hover:text-accent">Sistem Ekskresi</a></li>
+            <li><a href="anatomi.html" class="hover:text-accent">Sistem Reproduksi</a></li>
+            <li><a href="anatomi.html" class="hover:text-accent">Sistem Saraf</a></li>
+          </nav>
+        </div>
+        
+        <!-- Hubungi Kami -->
+        <div class="lg:w-1/4 md:w-1/2 w-full">
+          <h2 class="text-lg font-bold mb-6">Hubungi Kami</h2>
+          <nav class="list-none space-y-4">
+            <li><i class="ri-mail-line text-accent text-xl"></i> eduhealth@gmail.com</li>
+            <li><i class="ri-phone-line text-accent text-xl"></i> 0853 2345 6789</li>
+            <li><i class="ri-map-pin-line text-accent text-xl"></i> Mugarsari, Kec. Tamansari, Kota Tasikmalaya, Jawa Barat 46196</li>
+          </nav>
+        </div>
+      </div>
+      
+      <!-- Copyright -->
+      <p class="mt-12 lg:text-center">&copy;2024 EduHealth, Inc. All rights reserved.</p>
     </div>
 </footer>
-
-  
-
-
+<!-- End Footer -->
 
 <script src="js/main.js"></script>
 <script src="js/swiper-bundle.min.js"></script>
 <script src="js/scrollreveal.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
-
 
 </body>
 </html>
