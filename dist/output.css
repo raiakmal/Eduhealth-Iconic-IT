@@ -951,8 +951,13 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-accent {
+  --tw-bg-opacity: 1;
+  background-color: rgb(28 188 207 / var(--tw-bg-opacity));
+}
+
 .bg-sorotan {
-  background-image: url(../../assets/img/sorotan/bg.svg);
+  background-image: url(../assets/img/sorotan/bg.svg);
 }
 
 .bg-cover {
