@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -21,6 +20,9 @@
 
     <!-- Model Viewer -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+    <!-- Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY" async defer></script>
   </head>
   <body id="content">
     <!-- Header -->
@@ -125,169 +127,25 @@
     <!-- End Header -->
 
     <!-- Hero -->
-    <section id="hero-section" class="hero bg-grey py-12 lg:py-12 lg:pb-0 overflow-hidden">
-      <div class="container mx-auto h-full">
-        <div class="flex flex-col lg:flex-row items-center justify-between h-full">
-          <!-- Teks -->
-          <div class="hero__teks lg:w-[60%] text-center lg:text-left">
-            <!-- Badge -->
-            <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 mb-[26px] rounded-full mx-auto lg:mx-0">
-              <i class="ri-brain-line text-2xl text-accent"></i>
-              <div class="uppercase text-base font-medium text-[#9ab4b7] tracking-[2.24px]">Temukan setiap detailnya</div>
-            </div>
-            <h1 class="h1 mb-6">Eksplorasi Anatomi Tubuh Manusia</h1>
-            <p class="mb-[42px] md:max-w-lg">Jelajahi anatomi manusia dengan pendekatan menyeluruh, menggabungkan visual yang memukau dan informasi yang jelas untuk mendalami setiap bagian tubuh secara efisien.</p>
-            <button class="btn btn-lg btn-accent mx-auto lg:mx-0">Eksplor sekarang</button>
-          </div>
-
-          <!-- Gambar 3D -->
-          <div class="flex justify-center lg:col-span-1">
-            <model-viewer src="assets/blend/hero/organmanusia.glb" alt="3D Model" auto-rotate camera-controls style="height: 600px; width: 600px"></model-viewer>
-          </div>
-        </div>
+    <section class="relative flex mt-8 items-center justify-center h-40 lg:h-80 bg-cover bg-tentang">
+      <!-- Overlay Shadow -->
+      <div class="absolute inset-0 bg-black opacity-80"></div>
+      <div class="relative text-center text-white">
+        <h1 class="text-4xl md:text-6xl text-white font-bold tracking-widest">TENTANG</h1>
+        <p class="font-light">Tentang Kami</p>
       </div>
     </section>
     <!-- End Hero -->
 
-    <!-- Stats -->
-    <section class="stats section">
-      <div class="container mx-auto">
-        <div class="flex flex-col lg:flex-row gap-y-6 justify-between">
-          <!-- Item 1 -->
-          <div class="stats__item flex-1 border-r flex flex-col items-center">
-            <div class="text-4xl lg:text-[64px] font-semibold text-accent-tertiery lg:mb-2">78</div>
-            <div>Organ Tubuh</div>
-          </div>
-          <!-- Item 2 -->
-          <div class="stats__item flex-1 border-r flex flex-col items-center">
-            <div class="text-4xl lg:text-[64px] font-semibold text-accent-tertiery lg:mb-2">11</div>
-            <div>Sistem Organ</div>
-          </div>
-          <!-- Item 3 -->
-          <div class="stats__item flex-1 flex flex-col items-center">
-            <div class="text-4xl lg:text-[64px] font-semibold text-accent-tertiery lg:mb-2">5</div>
-            <div>Organ Vital</div>
-          </div>
+    <!-- Maps -->
+    <main class="container mx-auto px-4 py-16">
+      <section class="w-full h-[500px]">
+        <div class="mb-16">
+          <h2 class="text-3xl font-semibold mb-4">Lokasi Kami</h2>
+          <div id="map" class="w-full h-[500px] rounded-lg shadow-lg"></div>
         </div>
-      </div>
-    </section>
-    <!-- End Stats -->
-
-    <!-- Sorotan -->
-    <section class="sorotan" id="content">
-      <!-- Background -->
-      <div class="bg-sorotan bg-cover bg-no-repeat max-w-[1466px] mx-4 lg:mx-auto rounded-[20px] lg:pt-[70px] px-6 lg:px-0 relative h-[368px] flex items-center lg:items-start -z-10">
-        <div class="container mx-auto">
-          <!-- Teks -->
-          <div class="sorotan__top flex items-center flex-col lg:flex-row lg:mb-[60px]">
-            <h2 class="h2 text-white flex-1 mb-4 lg:mb-0 text-center lg:text-left">Sorotan</h2>
-            <p class="text-white flex-1 text-center lg:text-left max-w-2xl lg:max-w-none">Kenali tubuh Anda lebih dalam melalui platform belajar anatomi manusia yang interaktif, lengkap dengan visual dan penjelasan komprehensif.</p>
-          </div>
-        </div>
-      </div>
-      <!-- Card Container -->
-      <div class="container mx-auto mt-8 lg:-mt-[144px]">
-        <!-- Card -->
-        <div class="grid xl:grid-cols-3 gap-5 px-8 xl:px-0">
-          <!-- Card Item 1 -->
-          <div class="sorotan__item bg-white p-[30px] rounded-[10px] shadow-custom2 min-h-[288px] flex flex-col items-center text-center">
-            <!-- Card Item Icon -->
-            <div class="mb-[15px]">
-              <img src="assets/img/sorotan/organ.png" alt="organ-tubuh" />
-            </div>
-            <h3 class="h3 mb-[10px]">Organ Tubuh</h3>
-            <p class="font-light leading-normal max-w-[300px]">
-              Pelajari 78 organ tubuh manusia dan peran pentingnya dalam menjaga kehidupan. Dari otak hingga jantung, setiap organ memiliki fungsi unik yang saling bekerja sama untuk menjaga kesehatan dan keseimbangan tubuh. Temukan anatomi
-              kompleks ini dalam penjelasan singkat namun mendalam.
-            </p>
-          </div>
-          <!-- Card Item 2 -->
-          <div class="sorotan__item bg-white p-[30px] rounded-[10px] shadow custom2 min-h-[288px] flex flex-col items-center text-center">
-            <!-- Card Item Icon -->
-            <div class="mb-[15px]">
-              <img src="assets/img/sorotan/sel.png" alt="sistem-organ" />
-            </div>
-            <h3 class="h3 mb-[10px]">Sistem Organ</h3>
-            <p class="font-light leading-normal max-w-[300px]">
-              Kenali 11 sistem organ manusia yang berperan penting dalam kehidupan. Dari pernapasan hingga peredaran darah, setiap sistem bekerja selaras untuk menjaga kesehatan dan fungsi tubuh. Jelajahi bagaimana anatomi tubuh manusia
-              dikoordinasikan dalam penjelasan singkat namun informatif.
-            </p>
-          </div>
-          <!-- Card Item 3 -->
-          <div class="sorotan__item bg-white p-[30px] rounded-[10px] shadow custom2 min-h-[288px] flex flex-col items-center text-center">
-            <!-- Card Item Icon -->
-            <div class="mb-[15px]">
-              <img src="assets/img/sorotan/" alt="organ-vital" />
-            </div>
-            <h3 class="h3 mb-[10px]">Organ Vital</h3>
-            <p class="font-light leading-normal max-w-[300px]">
-              Pelajari 5 organ vital manusia yang menjaga kehidupan, jantung, otak, paru-paru, hati, dan ginjal. Setiap organ memainkan peran krusial dalam menjaga kesehatan dan keseimbangan tubuh. Temukan fungsinya dalam deskripsi singkat
-              namun penuh makna.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End Sorotan -->
-
-    <!-- Spesial -->
-    <section class="spesial bg-white py-16 lg:py-12 lg:mt-20">
-      <div class="container mx-auto">
-        <!-- Judul -->
-        <div class="text-center mb-6">
-          <h2 class="text-2xl lg:text-5xl font-bold mb-4">Apa yang membuat <span class="text-accent">Eduhealth</span> Spesial?</h2>
-          <p class="text-secondary">Eduhealth membantu kamu untuk mendapatkan pengetahuan tentang anatomi tubuh manusia dengan pengalaman menyenangkan dengan berbagai fitur yang kami tawarkan</p>
-        </div>
-        <!-- Spesial 1 -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center p-6 m-6">
-          <!-- Teks -->
-          <div class="lg:col-span-2 flex flex-col justify-center text-center lg:text-left">
-            <h3 class="text-xl font-bold text-accent-secondary mb-4">Visualisasi Realistis</h3>
-            <h4 class="text-xl lg:text-3xl font-bold mb-6">Nikmati visualisasi anatomi dengan kualitas gambar yang tinggi</h4>
-            <p class="text-secondary mb-6">Detail yang akurat, setiap bagian tubuh ditampilkan dengan jelas untuk memberikan pengalaman belajar yang mendalam.</p>
-            <a href="#" class="text-accent hover:text-accent-secondary">Selengkapnya →</a>
-          </div>
-          <!-- Gambar -->
-          <div class="flex justify-center lg:col-span-1">
-            <img src="assets/img/spesial/jantung.png" alt="gambar-spesial-jantung" style="height: 400px; width: 400px" />
-          </div>
-        </div>
-
-        <!-- Spesial 2 -->
-        <div class="grid bg-white grid-cols-1 lg:grid-cols-3 gap-12 items-center p-6 m-6">
-          <!-- Gambar -->
-          <div class="flex justify-center lg:col-span-1 mt-6 lg:mt-0 order-2 lg:order-1">
-            <img src="assets/img/spesial/paru.png" alt="gambar-spesial-paru" style="height: 400px; width: 400px" />
-          </div>
-          <!-- Teks -->
-          <div class="lg:col-span-2 flex flex-col justify-center text-center lg:text-left order-1 lg:order-2">
-            <h3 class="text-xl font-bold text-accent-secondary mb-4">Keunggulan Teknologi 3D</h3>
-            <h4 class="text-xl lg:text-3xl font-bold mb-6">Revolusi pembelajaran anatomi dengan teknologi 3D</h4>
-            <p class="text-secondary mb-6">
-              Tinggalkan buku teks anatomi yang membosankan! Dengan model 3D kami, kamu akan mendapatkan pengalaman belajar yang lebih nyata dan mendalam. Visualisasi 3D yang sangat detail memungkinkanmu untuk melihat struktur tubuh manusia
-              dari segala sudut. Rasakan sendiri bagaimana teknologi 3D mengubah cara kita mempelajari tubuh manusia.
-            </p>
-            <a href="#" class="text-accent hover:text-accent-secondary">Selengkapnya →</a>
-          </div>
-        </div>
-
-        <!-- Spesial 3 -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center p-6 m-6">
-          <!-- Teks -->
-          <div class="lg:col-span-2 flex flex-col justify-center text-center lg:text-left">
-            <h3 class="text-xl font-bold text-accent-secondary mb-4">Manfaat untuk Berbagai Kalangan</h3>
-            <h4 class="text-xl lg:text-3xl font-bold mb-6">Untuk siapa saja aplikasi ini?</h4>
-            <p class="text-secondary mb-6">Aplikasi kami cocok untuk berbagai kalangan, mulai dari siswa sekolah, mahasiswa kedokteran, hingga profesional kesehatan.</p>
-            <a href="#" class="text-accent hover:text-accent-secondary">Selengkapnya →</a>
-          </div>
-          <!-- Gambar -->
-          <div class="flex justify-center lg:col-span-1">
-            <img src="assets/img/spesial/liver.png" alt="gambar-spesial-liver" style="height: 400px; width: 400px" />
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End Spesial  -->
+      </section>
+    </main>
 
     <!-- Footer -->
     <footer class="bg-white">

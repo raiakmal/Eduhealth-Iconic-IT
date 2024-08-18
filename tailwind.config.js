@@ -34,6 +34,7 @@ module.exports = {
       },
       backgroundImage: {
         sorotan: 'url(../assets/img/sorotan/bg.svg)',
+        tentang: 'url(../assets/img/tentang/hero.png)',
       },
     },
   },
