@@ -1,10 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["*.{html,js}"],
+  content: ['*.{html,js}'],
   theme: {
     container: {
       padding: {
-        DEFAULT: '15px'
+        DEFAULT: '15px',
       },
     },
     screens: {
@@ -12,7 +12,7 @@ module.exports = {
       md: '768px',
       lg: '960px',
       xl: '1330px',
-      xxl: '1440px'
+      xxl: '1440px',
     },
     extend: {
       colors: {
@@ -33,9 +33,10 @@ module.exports = {
         custom2: '0px 0px 30px 0px rgba(8, 73, 81, 0.06)',
       },
       backgroundImage: {
-        sorotan: 'url(../../assets/img/sorotan/bg.svg)',
-      }
+        sorotan: 'url(../assets/img/sorotan/bg.svg)',
+        tentang: 'url(../assets/img/tentang/hero.png)',
+      },
     },
   },
   plugins: [],
-}
+};

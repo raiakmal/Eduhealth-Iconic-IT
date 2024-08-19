@@ -1,0 +1,211 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduHealth</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="dist/output.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Remix Icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.min.css" />
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Swiperjs -->
+    <link rel="stylesheet" href="/css/swiper-bundle.min.css" />
+
+    <!-- Model Viewer -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+    <!-- Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY" async defer></script>
+  </head>
+  <body id="content">
+    <!-- Header -->
+    <header class="py-8 lg:pt-6 lg:pb-14">
+      <div class="container mx-auto lg:relative flex flex-col lg:flex-row lg:justify-between gap-y-4 lg:gap-y-0">
+        <!-- Logo -->
+        <div class="flex justify-center lg:justify-normal">
+          <a href="#">
+            <img src="./assets/img/header/logo.svg" alt="logo-eduhealth" />
+          </a>
+        </div>
+
+        <div class="flex flex-col gap-y-4 lg:flex-row lg:items-center lg:gap-y-0 relative lg:z-50 lg:justify-between">
+          <div class="flex items-center justify-between w-full lg:w-auto lg:mr-8">
+            <div class="flex items-center text-4xl font-extralight text-black">
+              <span id="time" class="mr-2">09:30</span>
+              <div class="text-2xl font-semibold text-gray-400" id="ampm"><sup>PM</sup></div>
+            </div>
+
+            <!-- Toggle Dark Mode -->
+            <div class="relative inline-block text-left ml-auto lg:ml-4">
+              <div class="flex justify-end pr-4 lg:pr-0">
+                <button
+                  id="theme-toggle-button"
+                  class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gray-300 shadow-sm bg-white text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  <i class="ri-sun-line text-xl"></i>
+                </button>
+              </div>
+
+              <div id="theme-menu" class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
+                <div class="py-1" role="none">
+                  <a href="#" id="light-mode" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem"> <i class="ri-sun-line mr-2"></i> Light </a>
+                  <a href="#" id="dark-mode" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem"> <i class="ri-moon-line mr-2"></i> Dark </a>
+                  <a href="#" id="system-mode" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem"> <i class="ri-computer-line mr-2"></i> System </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Navbar -->
+        <nav class="mnav bg-white fixed w-[300px] top-0 h-screen -left-[300px] shadow-2xl lg:hidden transition-all duration-300">
+          <div class="mnav__close-btn bg-primary w-8 h-8 relative -right-full top-8 flex justify-center items-center rounded-tr-lg rounded-br-lg cursor-pointer transition-all">
+            <i class="mnav__close-btn-icon ri-arrow-right-s-line text-2xl text-white"></i>
+          </div>
+          <div class="px-12 flex flex-col gap-y-12 h-full">
+            <a href="#">
+              <img src="./assets/img/header/logo.svg" alt="logo-eduhealth" />
+            </a>
+            <ul class="flex flex-col gap-y-5">
+              <li>
+                <a href="index.html" class="text-secondary hover:text-accent transition-all duration-300">Beranda</a>
+              </li>
+              <li>
+                <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Definisi</a>
+              </li>
+              <li>
+                <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Eksplor</a>
+              </li>
+              <li>
+                <a href="tentang.html" class="text-secondary hover:text-accent transition-all duration-300">Tentang</a>
+              </li>
+              <li>
+                <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Kontak</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Desktop Navbar -->
+        <nav id="navbar" class="hidden navbar-default bg-white w-full left-0 shadow-custom1 h-16 rounded-[10px] lg:flex lg:items-center lg:justify-between lg:px-[50px]">
+          <ul class="flex gap-x-4">
+            <li>
+              <a href="index.html" class="border-r pr-4 text-secondary hover:text-accent transition-all duration-300">Beranda</a>
+            </li>
+            <li>
+              <a href="#" class="border-r pr-4 text-secondary hover:text-accent transition-all duration-300">Definisi</a>
+            </li>
+            <li>
+              <a href="#" class="border-r pr-4 text-secondary hover:text-accent transition-all duration-300">Eksplor</a>
+            </li>
+            <li>
+              <a href="tentang.html" class="border-r pr-4 text-secondary hover:text-accent transition-all duration-300">Tentang</a>
+            </li>
+            <li>
+              <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Kontak</a>
+            </li>
+          </ul>
+          <!-- Search -->
+          <div class="flex items-center">
+            <input type="text" id="searchInput" placeholder="Cari Kata" class="bg-grey text-secondary placeholder-secondary rounded-[5px] px-2 py-1 focus:outline-none" />
+            <i class="ri-search-line text-secondary ml-2 hover:text-accent transition-all duration-300" onclick="searchAndHighlight()"></i>
+          </div>
+          <div class="navigation-buttons">
+            <button onclick="navigateHighlights(-1)">Previous</button>
+            <button onclick="navigateHighlights(1)">Next</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- End Header -->
+
+    <!-- Hero -->
+    <section class="relative flex mt-8 items-center justify-center h-40 lg:h-80 bg-cover bg-tentang">
+      <!-- Overlay Shadow -->
+      <div class="absolute inset-0 bg-black opacity-80"></div>
+      <div class="relative text-center text-white">
+        <h1 class="text-4xl md:text-6xl text-white font-bold tracking-widest">TENTANG</h1>
+        <p class="font-light">Tentang Kami</p>
+      </div>
+    </section>
+    <!-- End Hero -->
+
+    <!-- Maps -->
+    <main class="container mx-auto px-4 py-16">
+      <section class="w-full h-[500px]">
+        <div class="mb-16">
+          <h2 class="text-3xl font-semibold mb-4">Lokasi Kami</h2>
+          <div id="map" class="w-full h-[500px] rounded-lg shadow-lg"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white">
+      <div class="container mx-auto mt-4 px-6 py-8">
+        <div class="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-10">
+          <!-- Logo dan Deskripsi -->
+          <div class="lg:w-1/4 md:w-1/2">
+            <h1 class="text-xl md:text-3xl font-bold mb-4"><span class="text-accent">EDUHEALTH</span></h1>
+            <p class="mt-2 text-md mb-6">Website tentang anatomi tubuh manusia. Untuk mengikuti lomba ICONIC IT 2024 diselenggarakan oleh Informatika UNSIL.</p>
+            <div class="flex space-x-4 mb-6">
+              <a href="https://github.com/" target="_blank"><img src="assets/icons/footer/gh.png" alt="GitHub Logo" class="h-10" /></a>
+              <a href="https://github.com/" target="_blank"><img src="assets/icons/footer/wa.png" alt="WhatsApp Logo" class="h-10" /></a>
+            </div>
+          </div>
+
+          <!-- Menu Eduhealth -->
+          <div class="lg:w-1/4 md:w-1/2 w-full">
+            <h2 class="text-lg font-bold mb-6">Menu Eduhealth</h2>
+            <nav class="list-none space-y-6">
+              <li><a href="index.html" class="hover:text-accent">Beranda</a></li>
+              <li><a href="index.html" class="hover:text-accent">Definisi</a></li>
+              <li><a href="index.html" class="hover:text-accent">Eksplor</a></li>
+              <li><a href="index.html" class="hover:text-accent">Tentang</a></li>
+              <li><a href="index.html" class="hover:text-accent">Kontak</a></li>
+            </nav>
+          </div>
+
+          <!-- Kategori -->
+          <div class="lg:w-1/4 md:w-1/2 w-full">
+            <h2 class="text-lg font-bold mb-6">Kategori</h2>
+            <nav class="list-none space-y-6">
+              <li><a href="anatomi.html" class="hover:text-accent">Sistem Pernapasan</a></li>
+              <li><a href="anatomi.html" class="hover:text-accent">Sistem Pencernaan</a></li>
+              <li><a href="anatomi.html" class="hover:text-accent">Sistem Ekskresi</a></li>
+              <li><a href="anatomi.html" class="hover:text-accent">Sistem Reproduksi</a></li>
+              <li><a href="anatomi.html" class="hover:text-accent">Sistem Saraf</a></li>
+            </nav>
+          </div>
+
+          <!-- Hubungi Kami -->
+          <div class="lg:w-1/4 md:w-1/2 w-full">
+            <h2 class="text-lg font-bold mb-6">Hubungi Kami</h2>
+            <nav class="list-none space-y-4">
+              <li><i class="ri-mail-line text-accent text-xl"></i> eduhealth@gmail.com</li>
+              <li><i class="ri-phone-line text-accent text-xl"></i> 0853 2345 6789</li>
+              <li><i class="ri-map-pin-line text-accent text-xl"></i> Mugarsari, Kec. Tamansari, Kota Tasikmalaya, Jawa Barat 46196</li>
+            </nav>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <p class="mt-12 lg:text-center">&copy;2024 EduHealth, Inc. All rights reserved.</p>
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <script src="js/main.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/scrollreveal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+  </body>
+</html>
