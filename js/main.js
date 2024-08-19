@@ -1,28 +1,4 @@
-document.addEventListener('scroll', function() {
-    const heroSection = document.getElementById('hero-section');
-    const backToTopButton = document.getElementById('backToTop');
-
-    // Get the position of the hero section relative to the viewport
-    const heroBottom = heroSection.getBoundingClientRect().bottom;
-
-    // Show the button if we've scrolled past the hero section
-    if (heroBottom < 0) {
-        backToTopButton.classList.add('show');
-    } else {
-        backToTopButton.classList.remove('show');
-    }
-});
-
-document.getElementById('backToTop').addEventListener('click', function() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
-
-
-
+// Navbar
 document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.getElementById('navbar');
     const navbarDefaultClass = 'navbar-default';
@@ -75,8 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // Serach
 let currentIndex = -1;
 let searchResults = [];
-
-
 
 function searchAndHighlight() {
     // Reset highlights
@@ -149,11 +123,9 @@ function resetHighlights() {
         element.outerHTML = element.innerText; // Replace the highlighted span with just text
     });
 
-  searchResults = [];
-  currentIndex = -1;
+    searchResults = [];
+    currentIndex = -1;
 }
-
-
 
 // Jam
 function updateTime() {
