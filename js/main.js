@@ -1,4 +1,28 @@
-// Navbar
+document.addEventListener('scroll', function() {
+    const heroSection = document.getElementById('hero-section');
+    const backToTopButton = document.getElementById('backToTop');
+
+    // Get the position of the hero section relative to the viewport
+    const heroBottom = heroSection.getBoundingClientRect().bottom;
+
+    // Show the button if we've scrolled past the hero section
+    if (heroBottom < 0) {
+        backToTopButton.classList.add('show');
+    } else {
+        backToTopButton.classList.remove('show');
+    }
+});
+
+document.getElementById('backToTop').addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.getElementById('navbar');
     const navbarDefaultClass = 'navbar-default';
@@ -10,6 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const navClosedClass = '-left-[300px]';
     const arrowLeftClass = 'ri-arrow-left-s-line';
     const arrowRightClass = 'ri-arrow-right-s-line';
+    const heroSection = document.getElementById('hero-section');
+    const logoIcon = document.querySelector('.iconNav');
 
     // Fix Navbar
     window.addEventListener('scroll', () => {
@@ -17,17 +43,26 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.scrollY > 50) {
                 navbar.classList.remove(navbarDefaultClass);
                 navbar.classList.add(navbarFixedClass);
+                logoIcon.style.display = 'flex'; // Show the logo
             } else {
                 navbar.classList.remove(navbarFixedClass);
                 navbar.classList.add(navbarDefaultClass);
+                logoIcon.style.display = 'none'; // Hide the logo
             }
-        } else {
-            navbar.classList.remove(navbarFixedClass);
-            navbar.classList.add(navbarDefaultClass);
         }
     });
 
-    // Fungsi cek lebar layar
+    // Initial check to determine if the logo should be visible on page load
+    if (isDesktop()) {
+        const initialHeroBottom = heroSection.getBoundingClientRect().bottom;
+        if (initialHeroBottom <= 0) {
+            logoIcon.style.display = 'flex'; // Show the logo
+        } else {
+            logoIcon.style.display = 'none'; // Hide the logo
+        }
+    }
+
+    // Function to check screen width
     function isDesktop() {
         return window.innerWidth > 767;
     }
@@ -48,16 +83,23 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+
 // Serach
 let currentIndex = -1;
 let searchResults = [];
 
+
+
 function searchAndHighlight() {
-    // Reset highlights
-    resetHighlights();
-    
+    // Reset highlights and hide buttons initially
+    resetHighlights(false);
+
     const searchInput = document.getElementById('searchInput').value;
-    if (searchInput.trim() === "") return;
+    if (searchInput.trim() === "") {
+        showPopup('Masukkan kata untuk mencari.');
+        return;
+    }
 
     const content = document.querySelector('body');
     const regex = new RegExp(searchInput, 'gi');
@@ -69,8 +111,67 @@ function searchAndHighlight() {
     currentIndex = -1;
 
     if (searchResults.length > 0) {
-        navigateResults(1); // Automatically navigate to the first result
+        // Show navigation and reset buttons only if search results are found
+        document.getElementById('prevButton').style.display = 'inline-block';
+        document.getElementById('nextButton').style.display = 'inline-block';
+        document.getElementById('resetButton').style.display = 'inline-block';
+
+        // Display the number of matches found
+        showPopup(`${searchResults.length} kata.`);
+
+        // Jump to the nearest match
+        jumpToNearestResult();
+
+    } else {
+        // If no results found, display "0 kata ditemukan"
+        showPopup('0 kata.');
     }
+}
+
+function jumpToNearestResult() {
+    const currentScrollPosition = window.scrollY;
+
+    let closestIndex = 0;
+    let minDistance = Infinity;
+
+    searchResults.forEach((result, index) => {
+        const resultPosition = result.getBoundingClientRect().top + window.scrollY;
+        const distance = Math.abs(resultPosition - currentScrollPosition);
+
+        if (distance < minDistance) {
+            closestIndex = index;
+            minDistance = distance;
+        }
+    });
+
+    // Scroll to the nearest result
+    currentIndex = closestIndex;
+    const nearestResult = searchResults[currentIndex];
+    nearestResult.classList.add('current-highlight');
+    nearestResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function navigateResults(direction) {
+    if (searchResults.length === 0) return;
+
+    // Remove the current highlight class
+    if (currentIndex !== -1) {
+        searchResults[currentIndex].classList.remove('current-highlight');
+    }
+
+    // Update index based on direction
+    currentIndex += direction;
+
+    if (currentIndex < 0) {
+        currentIndex = searchResults.length - 1;
+    } else if (currentIndex >= searchResults.length) {
+        currentIndex = 0;
+    }
+
+    // Scroll to the new current highlight and apply the current-highlight class
+    const currentResult = searchResults[currentIndex];
+    currentResult.classList.add('current-highlight');
+    currentResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
 function traverseAndHighlight(node, regex) {
@@ -115,15 +216,27 @@ function navigateResults(direction) {
     currentResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
-function resetHighlights() {
+function resetHighlights(resetInput = true) {
     const highlightedElements = document.querySelectorAll('.highlight');
     highlightedElements.forEach(element => {
         element.outerHTML = element.innerText; // Replace the highlighted span with just text
     });
 
+    // Hide navigation and reset buttons after reset
+    document.getElementById('prevButton').style.display = 'none';
+    document.getElementById('nextButton').style.display = 'none';
+    document.getElementById('resetButton').style.display = 'none';
+
+    // Clear the search input only if resetInput is true
+    if (resetInput) {
+        document.getElementById('searchInput').value = '';
+    }
+
     searchResults = [];
     currentIndex = -1;
 }
+
+
 
 // Jam
 function updateTime() {
@@ -298,4 +411,5 @@ window.addEventListener('resize', () => {
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
+
 

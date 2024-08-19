@@ -68,7 +68,7 @@
         </div>
 
         <!-- Mobile Navbar -->
-        <nav class="mnav bg-white fixed w-[300px] top-0 h-screen -left-[300px] shadow-2xl lg:hidden transition-all duration-300">
+        <nav class="mnav bg-white fixed w-[300px] top-0 h-screen -left-[300px] shadow-2xl lg:hidden transition-all duration-300 z-50">
             <div class="mnav__close-btn bg-primary w-8 h-8 relative -right-full top-8 flex justify-center items-center rounded-tr-lg rounded-br-lg cursor-pointer transition-all">
                 <i class="mnav__close-btn-icon ri-arrow-right-s-line text-2xl text-white"></i>
             </div>
@@ -96,36 +96,45 @@
             </div>
         </nav>
 
-        <!-- Desktop Navbar -->
-        <nav id="navbar" class="hidden navbar-default bg-white w-full left-0 shadow-custom1 h-16 rounded-[10px] lg:flex lg:items-center lg:justify-between lg:px-[50px]">
+       <!-- Desktop Navbar -->
+       <nav id="navbar" class="navbar-default bg-white w-full left-0 shadow-custom1 h-16 rounded-[10px] lg:flex lg:items-center lg:justify-between lg:px-[50px]">
+        <div class="flex items-center gap-x-4">
+            <!-- Logo -->
+            <a class="iconNav" href="#">
+                <img src="./assets/img/header/logo.svg" alt="Logo" class="h-8">
+            </a>
+            <!-- Navigation Links -->
             <ul class="flex gap-x-4">
-                
                 <li>
-                    <a href="#" class="border-r pr-4 text-secondary hover:text-accent transition-all duration-300">Beranda</a>
+                    <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Beranda</a>
                 </li>
                 <li>
-                    <a href="#" class="border-r pr-4 text-secondary hover:text-accent transition-all duration-300">Definisi</a>
+                    <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Definisi</a>
                 </li>
                 <li>
-                    <a href="#" class="border-r pr-4 text-secondary hover:text-accent transition-all duration-300">Eksplor</a>
+                    <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Eksplorasi</a>
                 </li>
                 <li>
-                    <a href="#" class="border-r pr-4 text-secondary hover:text-accent transition-all duration-300">Tentang</a>
+                    <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Tentang</a>
                 </li>
                 <li>
                     <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Kontak</a>
                 </li>
             </ul>
-            <!-- Search -->
-            <div class="flex items-center">
-                <input type="text" id="searchInput" placeholder="Cari Kata" class="bg-grey text-secondary placeholder-secondary rounded-[5px] px-2 py-1 focus:outline-none">
-                <i class="ri-search-line text-secondary ml-2 hover:text-accent transition-all duration-300" onclick="searchAndHighlight()"></i>
-            </div>
-            <div class="navigation-buttons">
-                <button onclick="navigateHighlights(-1)">Previous</button>
-                <button onclick="navigateHighlights(1)">Next</button>
-            </div>
-        </nav>
+        </div>
+        <!-- Search -->
+        <div class="flex items-center">
+            <input type="text" id="searchInput" placeholder="Cari Kata" class="bg-grey placeholder-secondary rounded-[5px] px-2 py-1 focus:outline-none">
+            <a href="javascript:void(0);">
+                <i class="ri-search-line text-secondary ml-2 hover:text-accent transition-all duration-300" onclick="searchAndHighlight(event)"></i>
+            </a>
+             <button id="prevButton" class="ml-3 mr-2 py-1 text-white rounded-[5px]" onclick="navigateResults(-1)" style="display:none;">⬆️</button>
+            <button id="nextButton" class=" py-1 text-white rounded-[5px]" onclick="navigateResults(1)" style="display:none;">⬇️</button>
+            <button id="resetButton" class="ml-2 px-2 py-1 bg-accent text-white rounded-[5px]" onclick="resetHighlights()" style="display:none;">Hapus</button>
+        </div>
+    </nav>
+    
+
     </div>
 </header>
 <!-- End Header -->
@@ -286,6 +295,16 @@
 </section>
 <!-- End Spesial  -->
   
+<!-- Back to Top Button -->
+<button id="backToTop" class="fixed z-50 p-3 bg-accent text-white rounded-full shadow-lg hover:bg-accent-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent hidden">
+    <i class="ri-arrow-up-line text-xl"></i>
+</button>
+
+
+
+ <!-- end back to top -->
+
+
 <!-- Footer -->
 <footer class="bg-white">
     <div class="container mx-auto mt-4 px-6 py-8">
