@@ -300,19 +300,13 @@ window.addEventListener('resize', () => {
 
 // Map
 function initMap() {
-  var location = { lat: -7.322511, lng: 108.217741 }; // Koordinat Mugarsari, Tasikmalaya
+  var location = { lat: -6.200000, lng: 106.816666 };
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 15,
-    center: location,
-    styles: [
-      /* Styling map jika diinginkan */
-    ],
+      zoom: 10,
+      center: location
   });
   var marker = new google.maps.Marker({
-    position: location,
-    map: map,
-    title: 'Kami Berada Di Sini',
+      position: location,
+      map: map
   });
 }
-
-window.onload = initMap;

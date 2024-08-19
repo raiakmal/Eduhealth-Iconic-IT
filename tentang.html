@@ -22,7 +22,7 @@
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
     <!-- Maps -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDD705cLhwi19kp0IMPGgAVsDcphhKj1Ic"></script>
   </head>
   <body id="content">
     <!-- Header -->
@@ -138,14 +138,11 @@
     <!-- End Hero -->
 
     <!-- Maps -->
-    <main class="container mx-auto px-4 py-16">
-      <section class="w-full h-[500px]">
-        <div class="mb-16">
-          <h2 class="text-3xl font-semibold mb-4">Lokasi Kami</h2>
-          <div id="map" class="w-full h-[500px] rounded-lg shadow-lg"></div>
-        </div>
-      </section>
-    </main>
+    <section onload="initMap()">
+      <div class="flex items-center justify-center h-screen bg-gray-100">
+          <div id="map" class="w-full h-96 md:h-[500px] md:w-2/3 bg-gray-300"></div>
+      </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-white">
@@ -205,7 +202,5 @@
     <script src="js/main.js"></script>
     <script src="js/swiper-bundle.min.js"></script>
     <script src="js/scrollreveal.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
   </body>
 </html>
