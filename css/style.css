@@ -12,19 +12,20 @@
 }
 
 .navbar-default {
-position: absolute;
-bottom: -86px;
-transition: all 0.3s ease;
+    position: absolute;
+    bottom: -86px;
+    transition: all 0.3s ease;
 }
 
 .navbar-fixed {
-position: fixed;
-top: 0;
-bottom: auto;
-transition: all 0.3s ease;
-width: 100%;
-z-index: 10;
-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5)
+    position: fixed;
+    top: 0;
+    bottom: auto;
+    padding: 40px;
+    transition: all 0.3s ease;
+    width: 100%;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .logo {
@@ -35,26 +36,41 @@ box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5)
     display: block;
 }
 
-/* Mengatur jarak antara logo dan menu */
-.navbar-fixed .logo {
-    margin-right: 20px; /* Sesuaikan jarak antara logo dan Beranda */
+/* Adjust spacing between logo and menu items */
+.logo {
+    margin-right: 2rem;
 }
 
+/* Adjust spacing between menu items */
+ul li:not(:last-child) a {
+    margin-right: 1.5rem;
+}
 
-/* Atur ulang jarak antar item */
+/* Ensure menu items are aligned properly */
 ul {
     display: flex;
     align-items: center;
-    gap: 24px; /* Sesuaikan nilai ini untuk jarak antar item */
-}
-
-ul li {
-    margin: 0;
 }
 
 
 
-/* Pastikan item navigasi tetap rapi */
-ul li a {
-    padding: 0; /* Hilangkan padding default yang mungkin berlebihan */
+.highlight {
+    background-color: yellow;
 }
+
+.current-highlight {
+    background-color: orange;
+}
+
+#searchNavigation button {
+    padding: 2px 5px;
+    margin: 0 2px;
+}
+
+#clearSearch {
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+
