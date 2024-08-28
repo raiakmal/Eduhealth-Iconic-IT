@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EduHealth</title>
+    <title>EduHealth - Eksplorasi Anatomi Tubuh Manusia</title>
     <!-- CSS -->
     <link rel="stylesheet" href="dist/output.css" />
     <link rel="stylesheet" href="css/style.css" />
@@ -28,7 +28,7 @@
       <div class="container mx-auto lg:relative flex flex-col lg:flex-row lg:justify-between gap-y-4 lg:gap-y-0">
         <!-- Logo -->
         <div class="flex justify-center lg:justify-normal">
-          <a href="#">
+          <a href="index.html">
             <img src="./assets/img/header/logo.svg" alt="logo-eduhealth" />
           </a>
         </div>
@@ -64,306 +64,299 @@
 
         <!-- Mobile Navbar -->
         <nav class="mnav bg-white fixed w-[300px] top-0 h-screen -left-[300px] shadow-2xl lg:hidden transition-all duration-300">
-            <div class="mnav__close-btn bg-primary w-8 h-8 relative -right-full top-8 flex justify-center items-center rounded-tr-lg rounded-br-lg cursor-pointer transition-all">
-                <i class="mnav__close-btn-icon ri-arrow-right-s-line text-2xl text-white"></i>
-            </div>
-            <div class="px-12 flex flex-col gap-y-12 h-full">
-                <a href="#">
-                    <img src="./assets/img/header/logo.svg" alt="">
-                </a>
-                <ul class="flex flex-col justify-center gap-y-5">
-                    <li>
-                        <a href="index.html" class="text-secondary hover:text-accent transition-all duration-300">Beranda</a>
-                    </li>
-                    <li>
-                        <a href="definisi.html" class="text-secondary hover:text-accent transition-all duration-300">Definisi</a>
-                    </li>
-                    <li>
-                        <a href="eksplor.html" class="text-secondary hover:text-accent transition-all duration-300">Eksplor</a>
-                    </li>
-                    <li>
-                        <a href="tentang.html" class="text-secondary hover:text-accent transition-all duration-300">Tentang</a>
-                    </li>
-                    <li>
-                        <a href="kontak.html" class="text-secondary hover:text-accent transition-all duration-300">Kontak</a>
-                    </li>
-                </ul>
-            </div>
+          <div class="mnav__close-btn bg-primary w-8 h-8 relative -right-full top-8 flex justify-center items-center rounded-tr-lg rounded-br-lg cursor-pointer transition-all">
+            <i class="mnav__close-btn-icon ri-arrow-right-s-line text-2xl text-white"></i>
+          </div>
+          <div class="px-12 flex flex-col gap-y-12 h-full">
+            <a href="#">
+              <img src="./assets/img/header/logo.svg" alt="" />
+            </a>
+            <ul class="flex flex-col gap-y-5">
+              <li>
+                <a href="index.html" class="text-secondary hover:text-accent transition-all duration-300">Beranda</a>
+              </li>
+              <li>
+                <a href="definisi.html" class="text-secondary hover:text-accent transition-all duration-300">Definisi</a>
+              </li>
+              <li>
+                <a href="eksplor.html" class="text-secondary hover:text-accent transition-all duration-300">Eksplor</a>
+              </li>
+              <li>
+                <a href="tentang.html" class="text-secondary hover:text-accent transition-all duration-300">Tentang</a>
+              </li>
+              <li>
+                <a href="kontak.html" class="text-secondary hover:text-accent transition-all duration-300">Kontak</a>
+              </li>
+            </ul>
+          </div>
         </nav>
 
         <!-- Desktop Navbar -->
         <nav id="navbar" class="hidden navbar-default bg-white w-full left-0 right-0 shadow-custom1 h-16 rounded-[10px] lg:flex lg:items-center lg:justify-between lg:px-[50px]">
           <div class="flex items-center">
-              <div class="logo hidden lg:block mr-8">
-                  <img src="./assets/img/header/logo.svg" alt="Logo" class="h-10">
-              </div>
-              <ul class="flex">
-                  <li>
-                      <a href="index.html" class="text-secondary hover:text-accent transition-all duration-300 mr-6">Beranda</a>
-                  </li>
-                  <li>
-                      <a href="definisi.html" class="text-secondary hover:text-accent transition-all duration-300 mr-6">Definisi</a>
-                  </li>
-                  <li>
-                      <a href="eksplor.html" class="text-secondary hover:text-accent transition-all duration-300 mr-6">Eksplor</a>
-                  </li>
-                  <li>
-                      <a href="tentang.html" class="text-secondary hover:text-accent transition-all duration-300 mr-6">Tentang</a>
-                  </li>
-                  <li>
-                      <a href="kontak.html" class="text-secondary hover:text-accent transition-all duration-300 mr-6">Kontak</a>
-                  </li>
-                 
-              </ul>
+            <div class="logo hidden lg:block mr-8">
+              <img src="./assets/img/header/logo.svg" alt="Logo" />
+            </div>
+            <ul class="flex">
+              <li>
+                <a href="index.html" class="text-secondary hover:text-accent transition-all duration-300 mr-6">Beranda</a>
+              </li>
+              <li>
+                <a href="definisi.html" class="text-secondary hover:text-accent transition-all duration-300 mr-6">Definisi</a>
+              </li>
+              <li>
+                <a href="eksplor.html" class="text-secondary hover:text-accent transition-all duration-300 mr-6">Eksplor</a>
+              </li>
+              <li>
+                <a href="tentang.html" class="text-secondary hover:text-accent transition-all duration-300 mr-6">Tentang</a>
+              </li>
+              <li>
+                <a href="kontak.html" class="text-secondary hover:text-accent transition-all duration-300 mr-6">Kontak</a>
+              </li>
+            </ul>
           </div>
           <!-- Search -->
           <div class="flex items-center">
             <div class="relative">
-                <input type="text" id="searchInput" placeholder="Cari Kata" class="bg-grey text-secondary placeholder-secondary rounded-[5px] px-2 py-1 focus:outline-none pr-8">
-                <button id="clearSearch" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-secondary hover:text-accent transition-all duration-300 hidden">
-                    &times;
-                </button>
+              <input type="text" id="searchInput" placeholder="Cari Kata" class="bg-grey text-secondary placeholder-secondary rounded-[5px] px-2 py-1 focus:outline-none pr-8" />
+              <button id="clearSearch" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-secondary hover:text-accent transition-all duration-300 hidden">&times;</button>
             </div>
             <i id="searchIcon" class="ri-search-line text-secondary ml-2 hover:text-accent transition-all duration-300 cursor-pointer"></i>
             <div id="searchNavigation" class="hidden ml-2">
-                <button id="prevButton" class="text-secondary hover:text-accent">&uarr;</button>
-                <button id="nextButton" class="text-secondary hover:text-accent">&darr;</button>
+              <button id="prevButton" class="text-secondary hover:text-accent">&uarr;</button>
+              <button id="nextButton" class="text-secondary hover:text-accent">&darr;</button>
             </div>
-        </div>
-      </nav>
-    </div>
-</header>
-<!-- End Header -->
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- End Header -->
 
-<!-- Hero -->
-<section class="relative flex mt-8 items-center justify-center h-40 lg:h-[400px] bg-cover bg-hero">
-  <!-- Overlay Shadow -->
-  <div class="absolute inset-0 bg-black opacity-80"></div>
-  <div class="relative text-center text-white">
-    <h1 class="text-4xl md:text-6xl text-white font-bold tracking-widest">DEFINISI</h1>
-    <p class="font-light">Definisi</p>
-  </div>
-</section>
-<!-- End Hero -->
+    <!-- Hero -->
+    <section class="relative flex mt-8 items-center justify-center h-40 lg:h-[400px] bg-cover bg-hero">
+      <!-- Overlay Shadow -->
+      <div class="absolute inset-0 bg-black opacity-80"></div>
+      <div class="relative text-center text-white">
+        <h1 class="text-4xl md:text-6xl text-white font-bold tracking-widest">DEFINISI</h1>
+      </div>
+    </section>
+    <!-- End Hero -->
 
-<!-- Definisi -->
-<section class="container mx-auto mt-8 mb-[80px] px-1">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <!-- Definisi -->
+    <section class="container mx-auto mt-8 mb-[80px] px-1">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <!-- Sidebar -->
         <aside class="md:col-span-1 bg-white p-4 shadow-lg rounded-lg">
-            <div>
-                <label for="sistem-organ" class="block font-semibold">Sistem Organ</label>
-                <select id="sistem-organ" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent-secondary">
-                    <option value="">Pilih Sistem Organ</option>
-                    <option value="sistem-saraf">Sistem Saraf</option>
-                    <option value="sistem-endokrin">Sistem Endokrin</option>
-                    <option value="sistem-pencernaan">Sistem Pencernaan</option>
-                    <option value="sistem-pernapasan">Sistem Pernapasan</option>
-                    <option value="sistem-peredaran-darah">Sistem Peredaran Darah</option>
-                    <option value="sistem-limfatik">Sistem Limfatik</option>
-                    <option value="sistem-muskuloskeletal">Sistem Muskuloskeletal</option>
-                    <option value="sistem-integumen">Sistem Integumen</option>
-                    <option value="sistem-ekskresi">Sistem Ekskresi</option>
-                    <option value="sistem-reproduksi">Sistem Reproduksi</option>
-                    <option value="sistem-imun">Sistem Imun</option>
-                </select>
-            </div>
-            
-            <div class="mt-4">
-                <label for="nama-organ" class="block font-semibold">Nama Organ</label>
-                <select id="nama-organ" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent">
-                    <option value="">Pilih Nama Organ</option>
-                     <!-- Nama Organ dari Sistem Saraf -->
-                     <option class="hidden" value="otak">Otak</option>
-                     <option class="hidden" value="sumsum-tulang-belakang">Sumsum Tulang Belakang</option>
-                     <option class="hidden" value="saraf-perifer">Saraf Perifer</option>
-                     <option class="hidden" value="otonom">Otonom</option>
-                     <option class="hidden" value="neuron">Neuron</option>
-                     
-                     <!-- Nama Organ dari Sistem Endokrin -->
-                     <option class="hidden" value="kelenjar-hipofisis">Kelenjar Hipofisis</option>
-                     <option class="hidden" value="kelenjar-tiroid">Kelenjar Tiroid</option>
-                     <option class="hidden" value="kelenjar-paratiroid">Kelenjar Paratiroid</option>
-                     <option class="hidden" value="kelenjar-adrenal">Kelenjar Adrenal</option>
-                     <option class="hidden" value="pankreas-pencernaan">Pankreas</option>
-                     <option class="hidden" value="gonad">Gonad (Testis atau Ovarium)</option>
-                     <option class="hidden" value="kelenjar-pineal">Kelenjar Pineal</option>
-                     <option class="hidden" value="kelenjar-timus">Kelenjar Timus</option>
-             
-                     <!-- Nama Organ dari Sistem Pencernaan -->
-                     <option class="hidden" value="mulut">Mulut</option>
-                     <option class="hidden" value="kerongkongan">Kerongkongan</option>
-                     <option class="hidden" value="lambung">Lambung</option>
-                     <option class="hidden"  value="usus-halus">Usus Halus</option>
-                     <option class="hidden" value="usus-besar">Usus Besar</option>
-                     <option class="hidden" value="hati">Hati</option>
-                     <option class="hidden" value="pankreas-pencernaan">Pankreas</option>
-                     <option class="hidden" value="kantong-empedu">Kantong Empedu</option>
-                     <option class="hidden" value="rektum">Rektum</option>
-                     <option class="hidden" value="anus">Anus</option>
-             
-                     <!-- Nama Organ dari Sistem Pernapasan -->
-                     <option class="hidden" value="hidung">Hidung</option>
-                     <option class="hidden" value="faring">Faring</option>
-                     <option class="hidden" value="laring">Laring</option>
-                     <option class="hidden" value="trakea">Trakea</option>
-                     <option class="hidden" value="bronkus">Bronkus</option>
-                     <option class="hidden" value="paru-paru">Paru-paru</option>
-                     <option class="hidden" value="diafragma">Diafragma</option>
-             
-                     <!-- Nama Organ dari Sistem Peredaran Darah -->
-                     <option class="hidden" value="jantung">Jantung</option>
-                     <option class="hidden" value="arteri">Arteri</option>
-                     <option class="hidden" value="vena">Vena</option>
-                     <option class="hidden" value="kapiler">Kapiler</option>
-             
-                     <!-- Nama Organ dari Sistem Limfatik -->
-                     <option class="hidden" value="kelenjar-getah-bening">Kelenjar Getah Bening</option>
-                     <option class="hidden" value="limpa">Limpa</option>
-                     <option class="hidden" value="pembuluh-limfatik">Pembuluh Limfatik</option>
-                     <option class="hidden" value="tonsil">Tonsil</option>
-                     <option class="hidden" value="adenoid">Adenoid</option>
-                     <option class="hidden" value="timos">Timos</option>
-                     <option class="hidden" value="sumsum-tulang-limfatik">Sumsum Tulang</option>
-                     
-                     <!-- Nama Organ dari Sistem Muskuloskeletal -->
-                     <option class="hidden" value="tulang">Tulang</option>
-                     <option class="hidden" value="otot">Otot</option>
-                     <option class="hidden" value="sendi">Sendi</option>
-                     <option class="hidden" value="tendon">Tendon</option>
-                     <option class="hidden" value="ligamen">Ligamen</option>
-             
-                     <!-- Nama Organ dari Sistem Integumen -->
-                     <option class="hidden" value="kulit">Kulit</option>
-                     <option class="hidden" value="rambut">Rambut</option>
-                     <option class="hidden" value="kuku">Kuku</option>
-                     <option class="hidden" value="kelenjar-keringat">Kelenjar Keringat</option>
-                     <option class="hidden" value="kelenjar-minyak">Kelenjar Minyak</option>
-             
-                     <!-- Nama Organ dari Sistem Ekskresi -->
-                     <option class="hidden" value="ginjal">Ginjal</option>
-                     <option class="hidden" value="ureter">Ureter</option>
-                     <option class="hidden" value="kandung-kemih">Kandung Kemih</option>
-                     <option class="hidden" value="uretra">Uretra</option>
-             
-                     <!-- Nama Organ dari Sistem Reproduksi -->
-                     <option class="hidden" value="testis">Testis</option>
-                     <option class="hidden" value="penis">Penis</option>
-                     <option class="hidden" value="vesikula-seminalis">Vesikula Seminalis</option>
-                     <option class="hidden" value="prostat">Prostat</option>
-                     <option class="hidden" value="vas-deferens">Vas Deferens</option>
-                     <option class="hidden" value="ovarium">Ovarium</option>
-                     <option class="hidden" value="tuba-falopi">Tuba Falopi</option>
-                     <option class="hidden" value="uterus">Uterus</option>
-                     <option class="hidden" value="vagina">Vagina</option>
-             
-                     <!-- Nama Organ dari Sistem Imun -->
-                     <option class="hidden" value="kelenjar-getah-bening-imun">Kelenjar Getah Bening</option>
-                     <option class="hidden" value="limpa-imun">Limpa</option>
-                     <option class="hidden" value="tonsil-imun">Tonsil</option>
-                     <option class="hidden" value="timos-imun">Timos</option>
-                     <option class="hidden" value="sumsum-tulang-imun">Sumsum Tulang</option>
-                     <option class="hidden" value="sel-darah-putih">Sel Darah Putih</option>
-                </select>
-            </div>
-            
-            <div class="mt-4">
-                <button id="cari-sekarang" class="w-full bg-accent text-white font-semibold py-2 px-4 rounded-lg hover:bg-accent-secondary focus:outline-none focus:ring-2 focus:ring-accent-secondary">
-                    Cari Sekarang
-                </button>
-            </div>
-        </aside>
+          <div>
+            <label for="sistem-organ" class="block font-semibold">Sistem Organ</label>
+            <select id="sistem-organ" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent-secondary">
+              <option value="">Pilih Sistem Organ</option>
+              <option value="sistem-saraf">Sistem Saraf</option>
+              <option value="sistem-endokrin">Sistem Endokrin</option>
+              <option value="sistem-pencernaan">Sistem Pencernaan</option>
+              <option value="sistem-pernapasan">Sistem Pernapasan</option>
+              <option value="sistem-peredaran-darah">Sistem Peredaran Darah</option>
+              <option value="sistem-limfatik">Sistem Limfatik</option>
+              <option value="sistem-muskuloskeletal">Sistem Muskuloskeletal</option>
+              <option value="sistem-integumen">Sistem Integumen</option>
+              <option value="sistem-ekskresi">Sistem Ekskresi</option>
+              <option value="sistem-reproduksi">Sistem Reproduksi</option>
+              <option value="sistem-imun">Sistem Imun</option>
+            </select>
+          </div>
 
+          <div class="mt-4">
+            <label for="nama-organ" class="block font-semibold">Nama Organ</label>
+            <select id="nama-organ" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent">
+              <option value="">Pilih Nama Organ</option>
+              <!-- Nama Organ dari Sistem Saraf -->
+              <option class="hidden" value="otak">Otak</option>
+              <option class="hidden" value="sumsum-tulang-belakang">Sumsum Tulang Belakang</option>
+              <option class="hidden" value="saraf-perifer">Saraf Perifer</option>
+              <option class="hidden" value="otonom">Otonom</option>
+              <option class="hidden" value="neuron">Neuron</option>
+
+              <!-- Nama Organ dari Sistem Endokrin -->
+              <option class="hidden" value="kelenjar-hipofisis">Kelenjar Hipofisis</option>
+              <option class="hidden" value="kelenjar-tiroid">Kelenjar Tiroid</option>
+              <option class="hidden" value="kelenjar-paratiroid">Kelenjar Paratiroid</option>
+              <option class="hidden" value="kelenjar-adrenal">Kelenjar Adrenal</option>
+              <option class="hidden" value="pankreas-pencernaan">Pankreas</option>
+              <option class="hidden" value="gonad">Gonad (Testis atau Ovarium)</option>
+              <option class="hidden" value="kelenjar-pineal">Kelenjar Pineal</option>
+              <option class="hidden" value="kelenjar-timus">Kelenjar Timus</option>
+
+              <!-- Nama Organ dari Sistem Pencernaan -->
+              <option class="hidden" value="mulut">Mulut</option>
+              <option class="hidden" value="kerongkongan">Kerongkongan</option>
+              <option class="hidden" value="lambung">Lambung</option>
+              <option class="hidden" value="usus-halus">Usus Halus</option>
+              <option class="hidden" value="usus-besar">Usus Besar</option>
+              <option class="hidden" value="hati">Hati</option>
+              <option class="hidden" value="pankreas-pencernaan">Pankreas</option>
+              <option class="hidden" value="kantong-empedu">Kantong Empedu</option>
+              <option class="hidden" value="rektum">Rektum</option>
+              <option class="hidden" value="anus">Anus</option>
+
+              <!-- Nama Organ dari Sistem Pernapasan -->
+              <option class="hidden" value="hidung">Hidung</option>
+              <option class="hidden" value="faring">Faring</option>
+              <option class="hidden" value="laring">Laring</option>
+              <option class="hidden" value="trakea">Trakea</option>
+              <option class="hidden" value="bronkus">Bronkus</option>
+              <option class="hidden" value="paru-paru">Paru-paru</option>
+              <option class="hidden" value="diafragma">Diafragma</option>
+
+              <!-- Nama Organ dari Sistem Peredaran Darah -->
+              <option class="hidden" value="jantung">Jantung</option>
+              <option class="hidden" value="arteri">Arteri</option>
+              <option class="hidden" value="vena">Vena</option>
+              <option class="hidden" value="kapiler">Kapiler</option>
+
+              <!-- Nama Organ dari Sistem Limfatik -->
+              <option class="hidden" value="kelenjar-getah-bening">Kelenjar Getah Bening</option>
+              <option class="hidden" value="limpa">Limpa</option>
+              <option class="hidden" value="pembuluh-limfatik">Pembuluh Limfatik</option>
+              <option class="hidden" value="tonsil">Tonsil</option>
+              <option class="hidden" value="adenoid">Adenoid</option>
+              <option class="hidden" value="timos">Timos</option>
+              <option class="hidden" value="sumsum-tulang-limfatik">Sumsum Tulang</option>
+
+              <!-- Nama Organ dari Sistem Muskuloskeletal -->
+              <option class="hidden" value="tulang">Tulang</option>
+              <option class="hidden" value="otot">Otot</option>
+              <option class="hidden" value="sendi">Sendi</option>
+              <option class="hidden" value="tendon">Tendon</option>
+              <option class="hidden" value="ligamen">Ligamen</option>
+
+              <!-- Nama Organ dari Sistem Integumen -->
+              <option class="hidden" value="kulit">Kulit</option>
+              <option class="hidden" value="rambut">Rambut</option>
+              <option class="hidden" value="kuku">Kuku</option>
+              <option class="hidden" value="kelenjar-keringat">Kelenjar Keringat</option>
+              <option class="hidden" value="kelenjar-minyak">Kelenjar Minyak</option>
+
+              <!-- Nama Organ dari Sistem Ekskresi -->
+              <option class="hidden" value="ginjal">Ginjal</option>
+              <option class="hidden" value="ureter">Ureter</option>
+              <option class="hidden" value="kandung-kemih">Kandung Kemih</option>
+              <option class="hidden" value="uretra">Uretra</option>
+
+              <!-- Nama Organ dari Sistem Reproduksi -->
+              <option class="hidden" value="testis">Testis</option>
+              <option class="hidden" value="penis">Penis</option>
+              <option class="hidden" value="vesikula-seminalis">Vesikula Seminalis</option>
+              <option class="hidden" value="prostat">Prostat</option>
+              <option class="hidden" value="vas-deferens">Vas Deferens</option>
+              <option class="hidden" value="ovarium">Ovarium</option>
+              <option class="hidden" value="tuba-falopi">Tuba Falopi</option>
+              <option class="hidden" value="uterus">Uterus</option>
+              <option class="hidden" value="vagina">Vagina</option>
+
+              <!-- Nama Organ dari Sistem Imun -->
+              <option class="hidden" value="kelenjar-getah-bening-imun">Kelenjar Getah Bening</option>
+              <option class="hidden" value="limpa-imun">Limpa</option>
+              <option class="hidden" value="tonsil-imun">Tonsil</option>
+              <option class="hidden" value="timos-imun">Timos</option>
+              <option class="hidden" value="sumsum-tulang-imun">Sumsum Tulang</option>
+              <option class="hidden" value="sel-darah-putih">Sel Darah Putih</option>
+            </select>
+          </div>
+
+          <div class="mt-4">
+            <button id="cari-sekarang" class="w-full bg-accent text-white font-semibold py-2 px-4 rounded-lg hover:bg-accent-secondary focus:outline-none focus:ring-2 focus:ring-accent-secondary">Cari Sekarang</button>
+          </div>
+        </aside>
 
         <!-- Deskripsi -->
         <div class="md:col-span-3 bg-gray-100 p-6 shadow-lg rounded-lg flex items-start">
-            <img src="" alt="" srcset="" id="gambar-penunjang" class="rounded-[20px] w-[300px] h-[300px] object-cover mr-6 hidden border-2 border-gray-300 border-none">
-            <p id="deskripsi-penjelasan" class="text-gray-500">Pilih sistem organ dan nama organ untuk melihat penjelasan.</p>
+          <img src="" alt="" srcset="" id="gambar-penunjang" class="rounded-[20px] w-[300px] h-[300px] object-cover mr-6 hidden border-2 border-gray-300 border-none" />
+          <p id="deskripsi-penjelasan" class="text-gray-500">Pilih sistem organ dan nama organ untuk melihat penjelasan.</p>
         </div>
-    </div>
-</section>
-<!-- End Definisi -->
+      </div>
+    </section>
+    <!-- End Definisi -->
 
-<!-- Banner -->
-<section class="container mx-auto py-16 flex flex-col lg:flex-row items-center bg-cover bg-center text-white rounded-lg bg-hero">
-    <!-- Text Content -->
-    <div class="lg:w-1/2 p-6 bg-opacity-50 rounded-lg">
+    <!-- Banner -->
+    <section class="container mx-auto py-16 flex flex-col lg:flex-row items-center bg-cover bg-center text-white rounded-lg bg-hero">
+      <!-- Text Content -->
+      <div class="lg:w-1/2 p-6 bg-opacity-50 rounded-lg">
         <h2 class="text-4xl font-bold mb-4 text-white">Masih bingung belajar tentang anatomi?</h2>
         <p class="text-lg mb-6">Tenang, kami mempunyai fitur rekomendasi yang membantu kamu lebih memahami anatomi tubuh manusia yang tepat dengan menjawab pertanyaan yang kami berikan.</p>
-        <a href="https://parawisely.herokuapp.com/registrasi" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-black font-semibold py-3 px-6 rounded-lg hover:bg-gray-200 transition">
-            Gabung &rarr;
-        </a>
-    </div>
-</section>
-<!-- End Banner -->
+        <a href="kontak.html" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-black font-semibold py-3 px-6 rounded-lg hover:bg-gray-200 transition"> Gabung &rarr; </a>
+      </div>
+    </section>
+    <!-- End Banner -->
 
+    <!-- Footer -->
+    <footer class="bg-white">
+      <div class="container mx-auto mt-4 px-6 py-8">
+        <div class="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-10">
+          <!-- Logo dan Deskripsi -->
+          <div class="lg:w-1/5 md:w-1/2">
+            <h1 class="text-xl md:text-3xl font-bold mb-4"><span class="text-accent">EDUHEALTH</span></h1>
+            <p class="mt-2 text-md mb-6">Website tentang anatomi tubuh manusia. Untuk mengikuti lomba ICONIC IT 2024 diselenggarakan oleh Informatika UNSIL.</p>
+            <div class="flex space-x-6 mb-6">
+              <a href="https://github.com/" target="_blank" class="flex items-center w-max gap-x-2 text-accent hover:text-accent-secondary">
+                <i class="ri-whatsapp-line text-2xl lg:text-4xl"></i>
+              </a>
+              <a href="https://github.com/jenioden1/iconiccc" target="_blank" class="flex items-center w-max gap-x-2 text-accent hover:text-accent-secondary">
+                <i class="ri-github-fill text-2xl lg:text-4xl"></i>
+              </a>
+            </div>
+          </div>
 
-<!-- Footer -->
-<footer class="bg-white">
-  <div class="container mx-auto mt-4 px-6 py-8">
-    <div class="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-10">
-      <!-- Logo dan Deskripsi -->
-      <div class="lg:w-1/5 md:w-1/2">
-        <h1 class="text-xl md:text-3xl font-bold mb-4"><span class="text-accent">EDUHEALTH</span></h1>
-        <p class="mt-2 text-md mb-6">Website tentang anatomi tubuh manusia. Untuk mengikuti lomba ICONIC IT 2024 diselenggarakan oleh Informatika UNSIL.</p>
-        <div class="flex space-x-4 mb-6">
-          <a href="https://github.com/" target="_blank"><img src="assets/icons/footer/gh.png" alt="GitHub-Logo" class="h-10" /></a>
-          <a href="https://github.com/" target="_blank"><img src="assets/icons/footer/wa.png" alt="WhatsApp-Logo" class="h-10" /></a>
+          <!-- Menu Eduhealth -->
+          <div class="lg:w-1/5 md:w-1/2 w-full">
+            <h2 class="text-lg font-bold mb-6">Menu Eduhealth</h2>
+            <nav class="list-none space-y-6">
+              <li><a href="index.html" class="hover:text-accent">Beranda</a></li>
+              <li><a href="definisi.html" class="hover:text-accent">Definisi</a></li>
+              <li><a href="eksplor.html" class="hover:text-accent">Eksplor</a></li>
+              <li><a href="tentang.html" class="hover:text-accent">Tentang</a></li>
+              <li><a href="kontak.html" class="hover:text-accent">Kontak</a></li>
+            </nav>
+          </div>
+
+          <!-- Kategori -->
+          <!-- Kategori -->
+          <div class="lg:w-1/3 md:w-1/2 w-full">
+            <h2 class="text-lg font-bold mb-6">Kategori</h2>
+            <div class="grid grid-cols-2 gap-4">
+              <nav class="list-none space-y-6">
+                <li><a href="definisi.html" class="hover:text-accent">Sistem Pernapasan</a></li>
+                <li><a href="definisi.html" class="hover:text-accent">Sistem Pencernaan</a></li>
+                <li><a href="definisi.html" class="hover:text-accent">Sistem Ekskresi</a></li>
+                <li><a href="definisi.html" class="hover:text-accent">Sistem Reproduksi</a></li>
+                <li><a href="definisi.html" class="hover:text-accent">Sistem Saraf</a></li>
+                <li><a href="definisi.html" class="hover:text-accent">Sistem Endokrin</a></li>
+              </nav>
+              <nav class="list-none space-y-6">
+                <li><a href="definisi.html" class="hover:text-accent">Sistem Limfatik</a></li>
+                <li><a href="definisi.html" class="hover:text-accent">Sistem Integumen</a></li>
+                <li><a href="definisi.html" class="hover:text-accent">Sistem Imun</a></li>
+                <li><a href="definisi.html" class="hover:text-accent">Sistem Muskuloskeletal</a></li>
+                <li><a href="definisi.html" class="hover:text-accent">Sistem Peredaran Darah</a></li>
+              </nav>
+            </div>
+          </div>
+
+          <!-- Hubungi Kami -->
+          <div class="lg:w-1/4 md:w-1/2 w-full">
+            <h2 class="text-lg font-bold mb-6">Hubungi Kami</h2>
+            <nav class="list-none space-y-4">
+              <li><i class="ri-mail-line text-accent text-xl"></i> eduhealth@gmail.com</li>
+              <li><i class="ri-phone-line text-accent text-xl"></i> 0853 2345 6789</li>
+              <li><i class="ri-map-pin-line text-accent text-xl"></i> Mugarsari, Kec. Tamansari, Kota Tasikmalaya, Jawa Barat 46196</li>
+            </nav>
+          </div>
         </div>
-      </div>
-      
-      <!-- Menu Eduhealth -->
-      <div class="lg:w-1/5 md:w-1/2 w-full">
-        <h2 class="text-lg font-bold mb-6">Menu Eduhealth</h2>
-        <nav class="list-none space-y-6">
-          <li><a href="#index.html" class="hover:text-accent">Beranda</a></li>
-          <li><a href="index.html" class="hover:text-accent">Definisi</a></li>
-          <li><a href="index.html" class="hover:text-accent">Eksplor</a></li>
-          <li><a href="index.html" class="hover:text-accent">Tentang</a></li>
-          <li><a href="index.html" class="hover:text-accent">Kontak</a></li>
-        </nav>
-      </div>
-      
-      <!-- Kategori -->
-     <!-- Kategori -->
-      <div class="lg:w-1/3 md:w-1/2 w-full">
-        <h2 class="text-lg font-bold mb-6">Kategori</h2>
-        <div class="grid grid-cols-2 gap-4">
-          <nav class="list-none space-y-6">
-            <li><a href="anatomi.html" class="hover:text-accent">Sistem Pernapasan</a></li>
-            <li><a href="anatomi.html" class="hover:text-accent">Sistem Pencernaan</a></li>
-            <li><a href="anatomi.html" class="hover:text-accent">Sistem Ekskresi</a></li>
-            <li><a href="anatomi.html" class="hover:text-accent">Sistem Reproduksi</a></li>
-            <li><a href="anatomi.html" class="hover:text-accent">Sistem Saraf</a></li>
-            <li><a href="anatomi.html" class="hover:text-accent">Sistem Endokrin</a></li>
-          </nav>
-          <nav class="list-none space-y-6">
-            <li><a href="anatomi.html" class="hover:text-accent">Sistem Limfatik</a></li>
-            <li><a href="anatomi.html" class="hover:text-accent">Sistem Integumen</a></li>
-            <li><a href="anatomi.html" class="hover:text-accent">Sistem Imun</a></li>
-            <li><a href="anatomi.html" class="hover:text-accent">Sistem Muskuloskeletal</a></li>
-            <li><a href="anatomi.html" class="hover:text-accent">Sistem Peredaran Darah</a></li>
-          </nav>
-        </div>
-      </div>
 
-      
-      <!-- Hubungi Kami -->
-      <div class="lg:w-1/4 md:w-1/2 w-full">
-        <h2 class="text-lg font-bold mb-6">Hubungi Kami</h2>
-        <nav class="list-none space-y-4">
-          <li><i class="ri-mail-line text-accent text-xl"></i> eduhealth@gmail.com</li>
-          <li><i class="ri-phone-line text-accent text-xl"></i> 0853 2345 6789</li>
-          <li><i class="ri-map-pin-line text-accent text-xl"></i> Mugarsari, Kec. Tamansari, Kota Tasikmalaya, Jawa Barat 46196</li>
-        </nav>
+        <!-- Copyright -->
+        <p class="mt-12 lg:text-center">&copy;2024 EduHealth, Inc. All rights reserved.</p>
       </div>
-    </div>
-    
-    <!-- Copyright -->
-    <p class="mt-12 lg:text-center">&copy;2024 EduHealth, Inc. All rights reserved.</p>
-  </div>
-</footer>
-<!-- End Footer -->
+    </footer>
+    <!-- End Footer -->
 
     <script src="js/main.js"></script>
     <script src="js/swiper-bundle.min.js"></script>
