@@ -63,129 +63,140 @@
 
         <!-- Mobile Navbar -->
         <nav class="mnav bg-white fixed w-[300px] top-0 h-screen -left-[300px] shadow-2xl lg:hidden transition-all duration-300">
-          <div class="mnav__close-btn bg-primary w-8 h-8 relative -right-full top-8 flex justify-center items-center rounded-tr-lg rounded-br-lg cursor-pointer transition-all">
-            <i class="mnav__close-btn-icon ri-arrow-right-s-line text-2xl text-white"></i>
-          </div>
-          <div class="px-12 flex flex-col gap-y-12 h-full">
-            <a href="#">
-              <img src="./assets/img/header/logo.svg" alt="logo-eduhealth" />
-            </a>
-            <ul class="flex flex-col gap-y-5">
-              <li>
-                <a href="index.html" class="text-secondary hover:text-accent transition-all duration-300">Beranda</a>
-              </li>
-              <li>
-                <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Definisi</a>
-              </li>
-              <li>
-                <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Eksplor</a>
-              </li>
-              <li>
-                <a href="tentang.html" class="text-secondary hover:text-accent transition-all duration-300">Tentang</a>
-              </li>
-              <li>
-                <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Kontak</a>
-              </li>
-            </ul>
-          </div>
+            <div class="mnav__close-btn bg-primary w-8 h-8 relative -right-full top-8 flex justify-center items-center rounded-tr-lg rounded-br-lg cursor-pointer transition-all">
+                <i class="mnav__close-btn-icon ri-arrow-right-s-line text-2xl text-white"></i>
+            </div>
+            <div class="px-12 flex flex-col gap-y-12 h-full">
+                <a href="#">
+                    <img src="./assets/img/header/logo.svg" alt="">
+                </a>
+                <ul class="flex flex-col gap-y-5">
+                    <li>
+                        <a href="index.html" class="text-secondary hover:text-accent transition-all duration-300">Beranda</a>
+                    </li>
+                    <li>
+                        <a href="definisi.html" class="text-secondary hover:text-accent transition-all duration-300">Definisi</a>
+                    </li>
+                    <li>
+                        <a href="eksplor.html" class="text-secondary hover:text-accent transition-all duration-300">Eksplor</a>
+                    </li>
+                    <li>
+                        <a href="tentang.html" class="text-secondary hover:text-accent transition-all duration-300">Tentang</a>
+                    </li>
+                    <li>
+                        <a href="kontak.html" class="text-secondary hover:text-accent transition-all duration-300">Kontak</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
 
         <!-- Desktop Navbar -->
-        <nav id="navbar" class="hidden navbar-default bg-white w-full left-0 shadow-custom1 h-16 rounded-[10px] lg:flex lg:items-center lg:justify-between lg:px-[50px]">
-          <ul class="flex gap-x-4">
-            <li>
-              <a href="index.html" class="border-r pr-4 text-secondary hover:text-accent transition-all duration-300">Beranda</a>
-            </li>
-            <li>
-              <a href="#" class="border-r pr-4 text-secondary hover:text-accent transition-all duration-300">Definisi</a>
-            </li>
-            <li>
-              <a href="#" class="border-r pr-4 text-secondary hover:text-accent transition-all duration-300">Eksplor</a>
-            </li>
-            <li>
-              <a href="tentang.html" class="border-r pr-4 text-secondary hover:text-accent transition-all duration-300">Tentang</a>
-            </li>
-            <li>
-              <a href="#" class="text-secondary hover:text-accent transition-all duration-300">Kontak</a>
-            </li>
-          </ul>
+        <nav id="navbar" class="hidden navbar-default bg-white w-full left-0 right-0 shadow-custom1 h-16 rounded-[10px] lg:flex lg:items-center lg:justify-between lg:px-[50px]">
+          <div class="flex items-center">
+              <div class="logo hidden lg:block mr-8">
+                  <img src="./assets/img/header/logo.svg" alt="Logo" class="h-10">
+              </div>
+              <ul class="flex">
+                  <li>
+                      <a href="index.html" class="text-secondary hover:text-accent transition-all duration-300 mr-6">Beranda</a>
+                  </li>
+                  <li>
+                      <a href="definisi.html" class="text-secondary hover:text-accent transition-all duration-300 mr-6">Definisi</a>
+                  </li>
+                  <li>
+                      <a href="eksplor.html" class="text-secondary hover:text-accent transition-all duration-300 mr-6">Eksplor</a>
+                  </li>
+                  <li>
+                      <a href="tentang.html" class="text-secondary hover:text-accent transition-all duration-300 mr-6">Tentang</a>
+                  </li>
+                  <li>
+                      <a href="kontak.html" class="text-secondary hover:text-accent transition-all duration-300 mr-6">Kontak</a>
+                  </li>
+                 
+              </ul>
+          </div>
           <!-- Search -->
           <div class="flex items-center">
-            <input type="text" id="searchInput" placeholder="Cari Kata" class="bg-grey text-secondary placeholder-secondary rounded-[5px] px-2 py-1 focus:outline-none" />
-            <i class="ri-search-line text-secondary ml-2 hover:text-accent transition-all duration-300" onclick="searchAndHighlight()"></i>
-          </div>
-          <div class="navigation-buttons">
-            <button onclick="navigateHighlights(-1)">Previous</button>
-            <button onclick="navigateHighlights(1)">Next</button>
-          </div>
-        </nav>
-      </div>
-    </header>
-    <!-- End Header -->
+            <div class="relative">
+                <input type="text" id="searchInput" placeholder="Cari Kata" class="bg-grey text-secondary placeholder-secondary rounded-[5px] px-2 py-1 focus:outline-none pr-8">
+                <button id="clearSearch" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-secondary hover:text-accent transition-all duration-300 hidden">
+                    &times;
+                </button>
+            </div>
+            <i id="searchIcon" class="ri-search-line text-secondary ml-2 hover:text-accent transition-all duration-300 cursor-pointer"></i>
+            <div id="searchNavigation" class="hidden ml-2">
+                <button id="prevButton" class="text-secondary hover:text-accent">&uarr;</button>
+                <button id="nextButton" class="text-secondary hover:text-accent">&darr;</button>
+            </div>
+        </div>
+      </nav>
+    </div>
+</header>
+<!-- End Header -->
 
 <!-- Hero -->
-<section class="relative flex mt-8 items-center justify-center h-40 lg:h-[300px] bg-cover bg-tentang">
+<section class="relative flex mt-8 items-center justify-center h-40 lg:h-[400px] bg-cover bg-hero">
   <!-- Overlay Shadow -->
   <div class="absolute inset-0 bg-black opacity-80"></div>
   <div class="relative text-center text-white">
-    <h1 class="text-4xl md:text-6xl text-white font-bold tracking-widest">TENTANG</h1>
+    <h1 class="text-4xl lg:text-6xl text-white font-bold tracking-widest">TENTANG</h1>
     <p class="font-light">Tentang Kami</p>
   </div>
 </section>
 <!-- End Hero -->
 
 <!-- Apa Itu Eduhealth -->
-<section class="container mx-auto py-16 px-4">
-  <div class="flex flex-col md:flex-row items-center">
+<section class="container mx-auto py-16">
+  <div class="flex flex-col-reverse lg:flex-row justify-center items-center">
       <!-- Teks -->
-      <div class="md:w-1/2">
-        <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 mb-[26px] rounded-full mx-auto lg:mx-0">
+      <div class="lg:w-1/2 text-center lg:text-left">
+        <div class="flex items-center bg-white w-max gap-x-2 mb-[26px] rounded-full mx-auto lg:mx-0">
           <i class="ri-brain-line text-2xl text-accent"></i>
           <div class="uppercase text-base font-medium text-black tracking-[2.24px]">Eduhealth</div>
         </div>
         <h1 class="h1 mb-6">Apa itu <span class="text-accent">Eduhealth?</span></h1>
-        <p class="mb-[30px] md:max-w-lg">Website tentang anatomi tubuh manusia. Untuk mengikuti lomba ICONIC IT 2024 yang diselenggarakan oleh Informatika UNSIL.</p>
-        <p class="md:max-w-lg">Jelajahi anatomi manusia dengan pendekatan menyeluruh, menggabungkan visual yang memukau dan informasi yang jelas untuk mendalami setiap bagian tubuh secara efisien. Website ini menawarkan panduan komprehensif tentang anatomi tubuh manusia, mengungkap detail dari setiap organ dan sistem. Dengan visual interaktif dan deskripsi mendalam, Anda dapat memahami bagaimana tubuh berfungsi secara keseluruhan. Ideal untuk pelajar, profesional kesehatan, atau siapa saja yang ingin mengeksplorasi kompleksitas tubuh manusia dengan cara yang mudah dipahami.</p>
+        <p class="mb-[30px] lg:max-w-lg mx-auto lg:mx-0">Website tentang anatomi tubuh manusia. Untuk mengikuti lomba ICONIC IT 2024 yang diselenggarakan oleh Informatika UNSIL.</p>
+        <p class="lg:max-w-lg mx-auto lg:mx-0">Jelajahi anatomi manusia dengan pendekatan menyeluruh, menggabungkan visual yang memukau dan informasi yang jelas untuk mendalami setiap bagian tubuh secara efisien. Website ini menawarkan panduan komprehensif tentang anatomi tubuh manusia, mengungkap detail dari setiap organ dan sistem. Dengan visual interaktif dan deskripsi mendalam, Anda dapat memahami bagaimana tubuh berfungsi secara keseluruhan. Ideal untuk pelajar, profesional kesehatan, atau siapa saja yang ingin mengeksplorasi kompleksitas tubuh manusia dengan cara yang mudah dipahami.</p>
       </div>
       <!-- Gambar -->
-      <div class="flex justify-center lg:col-span-1">
-        <model-viewer src="assets/blend/hero/organmanusia.glb" alt="3D-Model" auto-rotate camera-controls style="height: 600px; width: 500px" class="shadow-xl"></model-viewer>
+      <div class="flex justify-center mb-6 lg:mb-0">
+        <model-viewer src="assets/blend/hero/organmanusia.glb" alt="3D-Model" auto-rotate camera-controls style="height: 600px; width: 400px"></model-viewer>
       </div>
   </div>
 </section>
 <!-- End Apa itu Eduhealth -->
 
 <!-- Pages dan Sections -->
-<section class="container mx-auto py-16 px-4">
-  <div class="flex flex-col md:flex-row items-center">
+<section class="container mx-auto lg:py-16 flex justify-center">
+  <div class="flex flex-col lg:flex-row justify-center items-center max-w-6xl w-full">
       <!-- Gambar -->
-      <div class="md:w-1/2 mt-8 md:mt-0 md:ml-8">
-        <img src="https://via.placeholder.com/500x300" alt="Gambar Placeholder" class="rounded-lg shadow-lg">
+      <div class="lg:w-1/2 mt-8 lg:mt-0 lg:mr-20 hidden lg:flex justify-center order-2 lg:order-1">
+        <img src="assets/img/tentang/pages.png" alt="pages" class="rounded-lg shadow-lg mx-auto h-[600px]">
       </div>
       <!-- Teks -->
-      <div class="md:w-1/2">
-        <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 mb-[26px] rounded-full mx-auto lg:mx-0">
+      <div class="lg:w-1/2 text-center lg:text-left order-1 lg:order-2">
+        <div class="flex items-center bg-white w-max gap-x-2 mb-[26px] rounded-full mx-auto lg:mx-0">
           <i class="ri-brain-line text-2xl text-accent"></i>
           <div class="uppercase text-base font-medium text-black tracking-[2.24px]">Eduhealth</div>
         </div>
         <h1 class="h1 mb-6">5 Pages, 20+ Sections Unik</h1>
-        <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 text-3xl">
+        <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 text-3xl mx-auto lg:mx-0">
           <i class="ri-checkbox-line text-accent"></i>
           <div class="text-base font-medium text-black">Beranda</div>
         </div>
-        <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 text-3xl">
+        <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 text-3xl mx-auto lg:mx-0">
           <i class="ri-checkbox-line text-accent"></i>
           <div class="text-base font-medium text-black">Definisi</div>
         </div>
-        <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 text-3xl">
+        <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 text-3xl mx-auto lg:mx-0">
           <i class="ri-checkbox-line text-accent"></i>
           <div class="text-base font-medium text-black">Eksplor</div>
         </div>
-        <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 text-3xl">
+        <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 text-3xl mx-auto lg:mx-0">
           <i class="ri-checkbox-line text-accent"></i>
           <div class="text-base font-medium text-black">Tentang</div>
         </div>
-        <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 text-3xl">
+        <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 text-3xl mx-auto lg:mx-0">
           <i class="ri-checkbox-line text-accent"></i>
           <div class="text-base font-medium text-black">Kontak</div>
         </div>
@@ -195,55 +206,57 @@
 <!-- End Pages dan Sections -->
 
 <!-- Responsive -->
-<section class="container mx-auto py-16 px-4">
-  <div class="flex flex-col md:flex-row items-center">
+<section class="container py-16 flex justify-center items-center">
+  <div class="flex flex-col md:flex-row justify-center items-center max-w-6xl w-full">
       <!-- Teks -->
-      <div class="md:w-1/2">
-        <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 mb-[26px] rounded-full mx-auto lg:mx-0">
+      <div class="md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
+        <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 mb-[26px] rounded-full mx-auto md:mx-0">
           <i class="ri-brain-line text-2xl text-accent"></i>
           <div class="uppercase text-base font-medium text-black tracking-[2.24px]">Eduhealth</div>
         </div>
-        <i class="ri-smartphone-line text-black text-2xl md:text-5xl"></i>
+        <i class="ri-smartphone-line text-black text-4xl md:text-5xl mb-4"></i>
         <h1 class="h1 mb-6">Website yang Responsive</h1>
       </div>
       <!-- Gambar -->
-      <div class="md:w-1/2 mt-8 md:mt-0 md:ml-8">
-          <img src="https://via.placeholder.com/500x300" alt="Gambar Placeholder" class="rounded-lg shadow-lg">
+      <div class="md:w-1/2 mt-8 md:mt-0 hidden lg:flex justify-center">
+          <img src="assets/img/tentang/responsive.png" alt="responsive" class="rounded-lg shadow-lg mx-auto h-[600px]">
       </div>
   </div>
 </section>
 <!-- End Responsive -->
 
 <!-- Update & Support -->
-<section class="container mx-auto py-16 px-4">
-  <div class="flex flex-col md:flex-row items-center">
+<section class="container mx-auto lg:py-16 px-4 flex justify-center items-center">
+  <div class="flex flex-col md:flex-row items-center max-w-6xl w-full">
       <!-- Gambar -->
-      <div class="md:w-1/2 mt-8 md:mt-0 md:ml-8">
-        <img src="https://via.placeholder.com/500x300" alt="Gambar Placeholder" class="rounded-lg shadow-lg">
+      <div class="md:w-1/2 mt-8 md:mt-0 lg:mr-20 hidden lg:flex justify-center order-2 lg:order-1">
+        <img src="assets/img/tentang/update.png" alt="Gambar Placeholder" class="rounded-lg mx-auto h-[600px]">
       </div>
       <!-- Teks -->
-      <div class="md:w-1/2">
-        <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 mb-[26px] rounded-full mx-auto lg:mx-0">
+      <div class="md:w-1/2 mt-8 md:mt-0 text-center md:text-left order-1 lg:order-2">
+        <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 mb-[26px] rounded-full mx-auto md:mx-0">
           <i class="ri-brain-line text-2xl text-accent"></i>
           <div class="uppercase text-base font-medium text-black tracking-[2.24px]">Eduhealth</div>
         </div>
         <i class="ri-time-line text-black text-2xl md:text-5xl"></i>
         <h1 class="h1 mb-6">Update & Support</h1>
-        <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 text-3xl">
-          <i class="ri-checkbox-line text-accent"></i>
-          <div class="text-base font-medium text-black">Konten Terbaru</div>
-        </div>
-        <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 text-3xl">
-          <i class="ri-checkbox-line text-accent"></i>
-          <div class="text-base font-medium text-black">Update Definisi</div>
-        </div>
-        <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 text-3xl">
-          <i class="ri-checkbox-line text-accent"></i>
-          <div class="text-base font-medium text-black">Update Gambar dan 3D</div>
-        </div>
-        <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 text-3xl">
-          <i class="ri-checkbox-line text-accent"></i>
-          <div class="text-base font-medium text-black">Full Support</div>
+        <div class="flex flex-col items-center md:items-start">
+          <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 text-3xl mx-auto md:mx-0">
+            <i class="ri-checkbox-line text-accent"></i>
+            <div class="text-base font-medium text-black">Konten Terbaru</div>
+          </div>
+          <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 text-3xl mx-auto md:mx-0">
+            <i class="ri-checkbox-line text-accent"></i>
+            <div class="text-base font-medium text-black">Update Definisi</div>
+          </div>
+          <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 text-3xl mx-auto md:mx-0">
+            <i class="ri-checkbox-line text-accent"></i>
+            <div class="text-base font-medium text-black">Update Gambar dan 3D</div>
+          </div>
+          <div class="flex items-center bg-white py-[10px] px-[20px] w-max gap-x-2 text-3xl mx-auto md:mx-0">
+            <i class="ri-checkbox-line text-accent"></i>
+            <div class="text-base font-medium text-black">Full Support</div>
+          </div>
         </div>
       </div>
   </div>
@@ -251,60 +264,76 @@
 <!-- End Update & Support -->
 
 
-    <!-- Footer -->
-    <footer class="bg-white">
-      <div class="container mx-auto mt-4 px-6 py-8">
-        <div class="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-10">
-          <!-- Logo dan Deskripsi -->
-          <div class="lg:w-1/4 md:w-1/2">
-            <h1 class="text-xl md:text-3xl font-bold mb-4"><span class="text-accent">EDUHEALTH</span></h1>
-            <p class="mt-2 text-md mb-6">Website tentang anatomi tubuh manusia. Untuk mengikuti lomba ICONIC IT 2024 diselenggarakan oleh Informatika UNSIL.</p>
-            <div class="flex space-x-4 mb-6">
-              <a href="https://github.com/" target="_blank"><img src="assets/icons/footer/gh.png" alt="GitHub Logo" class="h-10" /></a>
-              <a href="https://github.com/" target="_blank"><img src="assets/icons/footer/wa.png" alt="WhatsApp Logo" class="h-10" /></a>
-            </div>
-          </div>
-
-          <!-- Menu Eduhealth -->
-          <div class="lg:w-1/4 md:w-1/2 w-full">
-            <h2 class="text-lg font-bold mb-6">Menu Eduhealth</h2>
-            <nav class="list-none space-y-6">
-              <li><a href="index.html" class="hover:text-accent">Beranda</a></li>
-              <li><a href="index.html" class="hover:text-accent">Definisi</a></li>
-              <li><a href="index.html" class="hover:text-accent">Eksplor</a></li>
-              <li><a href="index.html" class="hover:text-accent">Tentang</a></li>
-              <li><a href="index.html" class="hover:text-accent">Kontak</a></li>
-            </nav>
-          </div>
-
-          <!-- Kategori -->
-          <div class="lg:w-1/4 md:w-1/2 w-full">
-            <h2 class="text-lg font-bold mb-6">Kategori</h2>
-            <nav class="list-none space-y-6">
-              <li><a href="anatomi.html" class="hover:text-accent">Sistem Pernapasan</a></li>
-              <li><a href="anatomi.html" class="hover:text-accent">Sistem Pencernaan</a></li>
-              <li><a href="anatomi.html" class="hover:text-accent">Sistem Ekskresi</a></li>
-              <li><a href="anatomi.html" class="hover:text-accent">Sistem Reproduksi</a></li>
-              <li><a href="anatomi.html" class="hover:text-accent">Sistem Saraf</a></li>
-            </nav>
-          </div>
-
-          <!-- Hubungi Kami -->
-          <div class="lg:w-1/4 md:w-1/2 w-full">
-            <h2 class="text-lg font-bold mb-6">Hubungi Kami</h2>
-            <nav class="list-none space-y-4">
-              <li><i class="ri-mail-line text-accent text-xl"></i> eduhealth@gmail.com</li>
-              <li><i class="ri-phone-line text-accent text-xl"></i> 0853 2345 6789</li>
-              <li><i class="ri-map-pin-line text-accent text-xl"></i> Mugarsari, Kec. Tamansari, Kota Tasikmalaya, Jawa Barat 46196</li>
-            </nav>
-          </div>
+<!-- Footer -->
+<footer class="bg-white">
+  <div class="container mx-auto mt-4 px-6 py-8">
+    <div class="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-10">
+      <!-- Logo dan Deskripsi -->
+      <div class="lg:w-1/5 md:w-1/2">
+        <h1 class="text-xl md:text-3xl font-bold mb-4"><span class="text-accent">EDUHEALTH</span></h1>
+        <p class="mt-2 text-md mb-6">Website tentang anatomi tubuh manusia. Untuk mengikuti lomba ICONIC IT 2024 diselenggarakan oleh Informatika UNSIL.</p>
+        <div class="flex space-x-6 mb-6">
+          <a href="https://github.com/" target="_blank" class="flex items-center w-max gap-x-2 text-accent hover:text-accent-secondary">
+            <i class="ri-whatsapp-line text-2xl lg:text-4xl"></i>
+          </a>
+          <a href="https://github.com/" target="_blank" class="flex items-center w-max gap-x-2 text-accent hover:text-accent-secondary">
+            <i class="ri-github-fill text-2xl lg:text-4xl"></i>
+          </a>
         </div>
-
-        <!-- Copyright -->
-        <p class="mt-12 lg:text-center">&copy;2024 EduHealth, Inc. All rights reserved.</p>
       </div>
-    </footer>
-    <!-- End Footer -->
+      
+      <!-- Menu Eduhealth -->
+      <div class="lg:w-1/5 md:w-1/2 w-full">
+        <h2 class="text-lg font-bold mb-6">Menu Eduhealth</h2>
+        <nav class="list-none space-y-6">
+          <li><a href="#index.html" class="hover:text-accent">Beranda</a></li>
+          <li><a href="definisi.html" class="hover:text-accent">Definisi</a></li>
+          <li><a href="eksplor.html" class="hover:text-accent">Eksplor</a></li>
+          <li><a href="tentang.html" class="hover:text-accent">Tentang</a></li>
+          <li><a href="kontak.html" class="hover:text-accent">Kontak</a></li>
+        </nav>
+      </div>
+      
+      <!-- Kategori -->
+     <!-- Kategori -->
+      <div class="lg:w-1/3 md:w-1/2 w-full">
+        <h2 class="text-lg font-bold mb-6">Kategori</h2>
+        <div class="grid grid-cols-2 gap-4">
+          <nav class="list-none space-y-6">
+            <li><a href="definisi.html" class="hover:text-accent">Sistem Pernapasan</a></li>
+            <li><a href="definisi.html" class="hover:text-accent">Sistem Pencernaan</a></li>
+            <li><a href="definisi.html" class="hover:text-accent">Sistem Ekskresi</a></li>
+            <li><a href="definisi.html" class="hover:text-accent">Sistem Reproduksi</a></li>
+            <li><a href="definisi.html" class="hover:text-accent">Sistem Saraf</a></li>
+            <li><a href="definisi.html" class="hover:text-accent">Sistem Endokrin</a></li>
+          </nav>
+          <nav class="list-none space-y-6">
+            <li><a href="definisi.html" class="hover:text-accent">Sistem Limfatik</a></li>
+            <li><a href="definisi.html" class="hover:text-accent">Sistem Integumen</a></li>
+            <li><a href="definisi.html" class="hover:text-accent">Sistem Imun</a></li>
+            <li><a href="definisi.html" class="hover:text-accent">Sistem Muskuloskeletal</a></li>
+            <li><a href="definisi.html" class="hover:text-accent">Sistem Peredaran Darah</a></li>
+          </nav>
+        </div>
+      </div>
+
+      
+      <!-- Hubungi Kami -->
+      <div class="lg:w-1/4 md:w-1/2 w-full">
+        <h2 class="text-lg font-bold mb-6">Hubungi Kami</h2>
+        <nav class="list-none space-y-4">
+          <li><i class="ri-mail-line text-accent text-xl"></i> eduhealth@gmail.com</li>
+          <li><i class="ri-phone-line text-accent text-xl"></i> 0853 2345 6789</li>
+          <li><i class="ri-map-pin-line text-accent text-xl"></i> Mugarsari, Kec. Tamansari, Kota Tasikmalaya, Jawa Barat 46196</li>
+        </nav>
+      </div>
+    </div>
+    
+    <!-- Copyright -->
+    <p class="mt-12 lg:text-center">&copy;2024 EduHealth, Inc. All rights reserved.</p>
+  </div>
+</footer>
+<!-- End Footer -->
 
     <script src="js/main.js"></script>
     <script src="js/swiper-bundle.min.js"></script>

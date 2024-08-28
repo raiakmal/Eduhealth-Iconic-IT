@@ -52,7 +52,16 @@ ul {
     align-items: center;
 }
 
+.mnav {
+    z-index: 999;
+    background-color: white;
+}
 
+/* Pastikan Hero Section tidak menutupi */
+.bg-hero {
+    position: relative;
+    z-index: 1;
+}
 
 .highlight {
     background-color: yellow;
@@ -72,5 +81,3 @@ ul {
     line-height: 1;
     cursor: pointer;
 }
-
-

@@ -1,5 +1,55 @@
+// Navbar
+document.addEventListener('DOMContentLoaded', () => {
+  const navbar = document.getElementById('navbar');
+  const navbarDefaultClass = 'navbar-default';
+  const navbarFixedClass = 'navbar-fixed';
+  const mobileNav = document.querySelector('.mnav');
+  const closeBtn = document.querySelector('.mnav__close-btn');
+  const closeBtnIcn = document.querySelector('.mnav__close-btn-icon');
+  const navOpenedClass = 'left-0';
+  const navClosedClass = '-left-[300px]';
+  const arrowLeftClass = 'ri-arrow-left-s-line';
+  const arrowRightClass = 'ri-arrow-right-s-line';
 
-//definisi organ 
+  // Fix Navbar
+  window.addEventListener('scroll', () => {
+      if (isDesktop()) {
+          if (window.scrollY > 50) {
+              navbar.classList.remove(navbarDefaultClass);
+              navbar.classList.add(navbarFixedClass);
+          } else {
+              navbar.classList.remove(navbarFixedClass);
+              navbar.classList.add(navbarDefaultClass);
+          }
+      } else {
+          navbar.classList.remove(navbarFixedClass);
+          navbar.classList.add(navbarDefaultClass);
+      }
+  });
+
+  // Fungsi cek lebar layar
+  function isDesktop() {
+      return window.innerWidth > 767;
+  }
+
+// Mobile Navbar
+closeBtn.addEventListener('click', () => {
+  if (mobileNav.classList.contains(navClosedClass)) {
+    mobileNav.classList.remove(navClosedClass);
+    mobileNav.classList.add(navOpenedClass);
+  } else {
+    mobileNav.classList.remove(navOpenedClass);
+    mobileNav.classList.add(navClosedClass);
+  }
+
+  closeBtnIcn.classList.toggle(arrowLeftClass);
+  closeBtnIcn.classList.toggle(arrowRightClass);
+});
+});
+
+
+
+//Definisi Organ 
 document.addEventListener('DOMContentLoaded', function() {
   const sistemOrganSelect = document.getElementById('sistem-organ');
   const namaOrganSelect = document.getElementById('nama-organ');
@@ -8,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const deskripsiPenjelasan = document.getElementById('deskripsi-penjelasan');
 
   const organSystems = {
-    'sistem-saraf': ["Otak", "Sumsum Tulang Belakang", "Saraf Perifer", "Sistem Saraf Otonom", "Neuron"],
+    'sistem-saraf': ["Otak", "Sumsum Tulang Belakang", "Saraf Perifer", "Otonom", "Neuron"],
     'sistem-endokrin': ["Kelenjar Hipofisis", "Kelenjar Tiroid", "Kelenjar Paratiroid", "Kelenjar Adrenal", "Pankreas", "Gonad", "Kelenjar Pineal", "Kelenjar Timus"],
     'sistem-pencernaan': ["Mulut", "Kerongkongan", "Lambung", "Usus Halus", "Usus Besar", "Hati", "Pankreas", "Kantong Empedu", "Rektum", "Anus"],
     'sistem-pernapasan': ["Hidung", "Faring", "Laring", "Trakea", "Bronkus", "Paru-Paru", "Diafragma"],
@@ -21,40 +71,53 @@ document.addEventListener('DOMContentLoaded', function() {
     'sistem-imun': ["Kelenjar Getah Bening", "Limpa", "Tonsil", "Timos", "Sumsum Tulang", "Sel Darah Putih"]
 };
 
+document.addEventListener('DOMContentLoaded', function() {
+  // Set default message and image
+  deskripsiPenjelasan.textContent = "Pilih sistem organ dan nama organ untuk melihat penjelasan.";
+  gambarPenunjang.src = "";
 
-  sistemOrganSelect.addEventListener('change', function() {
-      const selectedSystem = this.value;
-      namaOrganSelect.innerHTML = '<option value="">Pilih Nama Organ</option>';
-      
-      if (organSystems[selectedSystem]) {
-          organSystems[selectedSystem].forEach(organ => {
-              const option = document.createElement('option');
-              option.value = organ.toLowerCase().replace(/ /g, '-');
-              option.textContent = organ;
-              namaOrganSelect.appendChild(option);
-          });
-      }
-  });
+  // Set default option for "Nama Organ" dropdown
+  namaOrganSelect.innerHTML = '<option value="">Pilih Nama Organ</option>';
+});
 
-  cariSekarangButton.addEventListener('click', function() {
-      const selectedSistem = sistemOrganSelect.value;
-      const selectedOrgan = namaOrganSelect.value;
+sistemOrganSelect.addEventListener('change', function() {
+  const selectedSystem = this.value;
+  
+  // Reset "Nama Organ" dropdown
+  namaOrganSelect.innerHTML = '<option value="">Pilih Nama Organ</option>';
+  
+  if (organSystems[selectedSystem]) {
+      organSystems[selectedSystem].forEach(organ => {
+          const option = document.createElement('option');
+          option.value = organ.toLowerCase().replace(/ /g, '-');
+          option.textContent = organ;
+          namaOrganSelect.appendChild(option);
+      });
+  }else {
+    // Jika sistem organ belum dipilih, hapus semua opsi selain "Pilih Nama Organ"
+    namaOrganSelect.innerHTML = '<option value="">Pilih Nama Organ</option>';
+  }
+});
 
-      if (selectedSistem) {
-          if (selectedOrgan === '') {
-              // Tampilkan penjelasan umum untuk sistem organ yang dipilih
-              deskripsiPenjelasan.textContent = getSystemDescription(selectedSistem);
-              gambarPenunjang.src = `assets/img/definisi/sistem/${selectedSistem}.png`;
-          } else {
-              // Tampilkan penjelasan untuk organ spesifik yang dipilih
-              deskripsiPenjelasan.textContent = getOrganDescription(selectedSistem, selectedOrgan);
-              gambarPenunjang.src = `path/to/${selectedOrgan}.png`;
-          }
+cariSekarangButton.addEventListener('click', function() {
+  const selectedSistem = sistemOrganSelect.value;
+  const selectedOrgan = namaOrganSelect.value;
+
+  if (selectedSistem) {
+      if (selectedOrgan === '') {
+          // Display general description for the selected organ system
+          deskripsiPenjelasan.textContent = getSystemDescription(selectedSistem);
+          gambarPenunjang.src = `assets/img/definisi/sistem/${selectedSistem}.png`;
       } else {
-          deskripsiPenjelasan.textContent = "Pilih sistem organ dan nama organ untuk melihat penjelasan.";
-          gambarPenunjang.src = "";
+          // Display specific description for the selected organ
+          deskripsiPenjelasan.textContent = getOrganDescription(selectedSistem, selectedOrgan);
+          gambarPenunjang.src = `assets/img/definisi/organ/${selectedOrgan}.png`;
       }
-  });
+  } else {
+      deskripsiPenjelasan.textContent = "Pilih sistem organ dan nama organ untuk melihat penjelasan.";
+      gambarPenunjang.src = "";
+  }
+});
 
   function getSystemDescription(system) {
     const descriptions = {
@@ -80,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'otak': "Otak adalah pusat kendali utama sistem saraf yang mengatur semua fungsi tubuh dan aktivitas mental. Terdiri dari miliaran neuron yang saling berinteraksi, otak mengoordinasikan tindakan sukarela dan tidak sukarela seperti berpikir, belajar, emosi, gerakan otot, serta fungsi organ-organ vital seperti detak jantung dan pernapasan. Otak juga berperan dalam memproses informasi sensorik yang diterima dari seluruh tubuh, membantu kita memahami dunia di sekitar kita. Selain itu, otak terbagi menjadi beberapa bagian, termasuk otak besar (cerebrum), otak kecil (cerebellum), dan batang otak, yang masing-masing memiliki fungsi spesifik.",
         'sumsum-tulang-belakang': "Sumsum tulang belakang adalah bagian dari sistem saraf pusat yang menghubungkan otak dengan saraf-saraf di seluruh tubuh. Ini adalah jalur utama yang membawa sinyal antara otak dan tubuh, memungkinkan kontrol gerakan dan respons terhadap rangsangan. Sumsum tulang belakang juga berperan dalam refleks, yang merupakan respons cepat dan otomatis terhadap rangsangan tanpa keterlibatan otak secara langsung. Kerusakan pada sumsum tulang belakang dapat menyebabkan gangguan serius pada fungsi motorik dan sensorik, termasuk kelumpuhan.",
         'saraf-perifer': "Saraf perifer adalah jaringan saraf di luar otak dan sumsum tulang belakang yang menghubungkan sistem saraf pusat dengan anggota tubuh. Saraf-saraf ini bertanggung jawab untuk membawa sinyal dari otak dan sumsum tulang belakang ke otot-otot, kulit, dan organ-organ tubuh lainnya, serta mengirimkan informasi sensorik kembali ke otak. Sistem saraf perifer terdiri dari saraf somatik yang mengontrol gerakan sukarela dan saraf otonom yang mengatur fungsi tubuh yang tidak disengaja seperti pencernaan dan detak jantung.",
-        'sistem-saraf-otonom': "Sistem saraf otonom mengatur fungsi tubuh yang tidak disengaja seperti detak jantung, pencernaan, dan pernapasan. Sistem ini bekerja di bawah kesadaran kita, mengendalikan fungsi vital yang diperlukan untuk kelangsungan hidup tanpa perlu kita sadari. Sistem saraf otonom dibagi menjadi dua bagian, yaitu sistem saraf simpatik yang berperan dalam respon 'fight or flight', dan sistem saraf parasimpatik yang membantu tubuh beristirahat dan mencerna makanan.",
+        'otonom': "Sistem saraf otonom mengatur fungsi tubuh yang tidak disengaja seperti detak jantung, pencernaan, dan pernapasan. Sistem ini bekerja di bawah kesadaran kita, mengendalikan fungsi vital yang diperlukan untuk kelangsungan hidup tanpa perlu kita sadari. Sistem saraf otonom dibagi menjadi dua bagian, yaitu sistem saraf simpatik yang berperan dalam respon 'fight or flight', dan sistem saraf parasimpatik yang membantu tubuh beristirahat dan mencerna makanan.",
         'neuron': "Neuron adalah sel-sel saraf yang mengirimkan dan menerima sinyal listrik di seluruh tubuh. Setiap neuron terdiri dari badan sel, dendrit yang menerima sinyal dari neuron lain, dan akson yang mengirimkan sinyal ke neuron lain atau ke otot. Neuron berkomunikasi melalui sinapsis, di mana neurotransmitter dilepaskan untuk menyampaikan pesan dari satu neuron ke neuron lainnya. Fungsi neuron yang efisien sangat penting untuk berbagai proses tubuh, mulai dari gerakan otot hingga pengolahan informasi di otak."
     },
     'sistem-endokrin': {
@@ -178,11 +241,9 @@ document.addEventListener('DOMContentLoaded', function() {
 document.getElementById("cari-sekarang").addEventListener("click", function() {
   const gambar = document.getElementById("gambar-penunjang");
   
-  // Menampilkan gambar dan border saat tombol diklik
+  // Menampilkan gambar dan deskripsi
   gambar.classList.remove("hidden");
   gambar.classList.add("border-2", "border-gray-300");
-  
-  // Anda bisa menambahkan kode lain di sini untuk mengubah src gambar sesuai organ yang dipilih
 });
 
 document.getElementById("cari-sekarang").addEventListener("click", function() {
@@ -193,66 +254,13 @@ document.getElementById("cari-sekarang").addEventListener("click", function() {
       // Jika opsi default dipilih, sembunyikan gambar
       gambar.classList.add("hidden");
   } else {
-      // Jika opsi valid dipilih, tampilkan gambar
+      // Jika opsi sistem atau organ dipilih, tampilkan gambar
       gambar.classList.remove("hidden");
-      // Update src gambar jika perlu, sesuai dengan sistem organ yang dipilih
-      // gambar.src = "path/to/your/image.jpg"; // Set sesuai dengan gambar yang sesuai
   }
 });
 
 
-// Navbar
-document.addEventListener('DOMContentLoaded', () => {
-    const navbar = document.getElementById('navbar');
-    const navbarDefaultClass = 'navbar-default';
-    const navbarFixedClass = 'navbar-fixed';
-    const mobileNav = document.querySelector('.mnav');
-    const closeBtn = document.querySelector('.mnav__close-btn');
-    const closeBtnIcn = document.querySelector('.mnav__close-btn-icon');
-    const navOpenedClass = 'left-0';
-    const navClosedClass = '-left-[300px]';
-    const arrowLeftClass = 'ri-arrow-left-s-line';
-    const arrowRightClass = 'ri-arrow-right-s-line';
-
-    // Fix Navbar
-    window.addEventListener('scroll', () => {
-        if (isDesktop()) {
-            if (window.scrollY > 50) {
-                navbar.classList.remove(navbarDefaultClass);
-                navbar.classList.add(navbarFixedClass);
-            } else {
-                navbar.classList.remove(navbarFixedClass);
-                navbar.classList.add(navbarDefaultClass);
-            }
-        } else {
-            navbar.classList.remove(navbarFixedClass);
-            navbar.classList.add(navbarDefaultClass);
-        }
-    });
-
-    // Fungsi cek lebar layar
-    function isDesktop() {
-        return window.innerWidth > 767;
-    }
-
-  // Mobile Navbar
-  closeBtn.addEventListener('click', () => {
-    if (mobileNav.classList.contains(navClosedClass)) {
-      mobileNav.classList.remove(navClosedClass);
-      mobileNav.classList.add(navOpenedClass);
-    } else {
-      mobileNav.classList.remove(navOpenedClass);
-      mobileNav.classList.add(navClosedClass);
-    }
-
-    closeBtnIcn.classList.toggle(arrowLeftClass);
-    closeBtnIcn.classList.toggle(arrowRightClass);
-  });
-});
-
-
-
-//search
+//Search
 let currentHighlightIndex = -1;
 let highlights = [];
 
@@ -556,20 +564,6 @@ window.addEventListener('resize', () => {
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
-
-
-// Map
-function initMap() {
-  var location = { lat: -6.200000, lng: 106.816666 };
-  var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 10,
-      center: location
-  });
-  var marker = new google.maps.Marker({
-      position: location,
-      map: map
-  });
-}
 
 
 
