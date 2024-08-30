@@ -1,27 +1,3 @@
-// Jam
-function updateTime() {
-  const timeDisplay = document.getElementById('time');
-  const ampmDisplay = document.getElementById('ampm').querySelector('sup');
-  const now = new Date();
-  let hours = now.getHours();
-  const minutes = now.getMinutes();
-  const isAm = hours < 12 || hours === 24;
-  if (hours === 0) {
-    hours = 12;
-  } else if (hours > 12) {
-    hours -= 12;
-  }
-  const formattedHours = hours < 10 ? '0' + hours : hours;
-  const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-  const timeString = `${formattedHours}.${formattedMinutes}`;
-  const ampmString = isAm ? 'AM' : 'PM';
-  timeDisplay.textContent = timeString;
-  ampmDisplay.textContent = ampmString;
-}
-
-setInterval(updateTime, 1000);
-updateTime();
-
 //Search
 let currentHighlightIndex = -1;
 let highlights = [];
@@ -81,10 +57,9 @@ function getTextNodes(node) {
   if (node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '') {
     textNodes.push(node);
   } else {
-    const children = node.childNodes;
-    for (let i = 0; i < children.length; i++) {
-      textNodes = textNodes.concat(getTextNodes(children[i]));
-    }
+    node.childNodes.forEach((child) => {
+      textNodes = textNodes.concat(getTextNodes(child));
+    });
   }
   return textNodes;
 }
@@ -101,6 +76,8 @@ function clearHighlights() {
 }
 
 function navigateToNearestHighlight() {
+  if (highlights.length === 0) return;
+
   const navbar = document.getElementById('navbar');
   const navbarRect = navbar.getBoundingClientRect();
   const navbarBottom = navbarRect.bottom;
@@ -152,6 +129,31 @@ document.getElementById('clearSearch').addEventListener('click', clearSearch);
 document.getElementById('searchIcon').addEventListener('click', searchAndHighlight);
 document.getElementById('prevButton').addEventListener('click', () => navigateHighlight(-1));
 document.getElementById('nextButton').addEventListener('click', () => navigateHighlight(1));
+
+
+// Jam
+function updateTime() {
+  const timeDisplay = document.getElementById('time');
+  const ampmDisplay = document.getElementById('ampm').querySelector('sup');
+  const now = new Date();
+  let hours = now.getHours();
+  const minutes = now.getMinutes();
+  const isAm = hours < 12 || hours === 24;
+  if (hours === 0) {
+    hours = 12;
+  } else if (hours > 12) {
+    hours -= 12;
+  }
+  const formattedHours = hours < 10 ? '0' + hours : hours;
+  const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+  const timeString = `${formattedHours}.${formattedMinutes}`;
+  const ampmString = isAm ? 'AM' : 'PM';
+  timeDisplay.textContent = timeString;
+  ampmDisplay.textContent = ampmString;
+}
+
+setInterval(updateTime, 1000);
+updateTime();
 
 // Navbar
 document.addEventListener('DOMContentLoaded', () => {
