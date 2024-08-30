@@ -1,19 +1,3 @@
-// Navbar
-document.addEventListener('DOMContentLoaded', () => {
-  const navbar = document.getElementById('navbar');
-  const navbarDefaultClass = 'navbar-default';
-  const navbarFixedClass = 'navbar-fixed';
-  const mobileNav = document.querySelector('.mnav');
-  const closeBtn = document.querySelector('.mnav__close-btn');
-  const closeBtnIcn = document.querySelector('.mnav__close-btn-icon');
-  const navOpenedClass = 'left-0';
-  const navClosedClass = '-left-[300px]';
-  const arrowLeftClass = 'ri-arrow-left-s-line';
-  const arrowRightClass = 'ri-arrow-right-s-line';
-
-
-
-
 //Search
 let currentHighlightIndex = -1;
 let highlights = [];
@@ -145,6 +129,19 @@ document.getElementById('searchIcon').addEventListener('click', searchAndHighlig
 document.getElementById('prevButton').addEventListener('click', () => navigateHighlight(-1));
 document.getElementById('nextButton').addEventListener('click', () => navigateHighlight(1));
 
+// Navbar
+document.addEventListener('DOMContentLoaded', () => {
+  const navbar = document.getElementById('navbar');
+  const navbarDefaultClass = 'navbar-default';
+  const navbarFixedClass = 'navbar-fixed';
+  const mobileNav = document.querySelector('.mnav');
+  const closeBtn = document.querySelector('.mnav__close-btn');
+  const closeBtnIcn = document.querySelector('.mnav__close-btn-icon');
+  const navOpenedClass = 'left-0';
+  const navClosedClass = '-left-[300px]';
+  const arrowLeftClass = 'ri-arrow-left-s-line';
+  const arrowRightClass = 'ri-arrow-right-s-line';
+
   // Fix Navbar
   window.addEventListener('scroll', () => {
     if (isDesktop()) {
@@ -239,8 +236,9 @@ document.getElementById('sistem-organ').addEventListener('change', function () {
   }
 });
 
-
-const timeDisplay = document.getElementById('time');
+// Jam
+function updateTime() {
+  const timeDisplay = document.getElementById('time');
   const ampmDisplay = document.getElementById('ampm').querySelector('sup');
   const now = new Date();
   let hours = now.getHours();
