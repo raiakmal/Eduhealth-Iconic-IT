@@ -68,7 +68,7 @@ ul {
 }
 
 .current-highlight {
-    background-color: orange;
+    background-color: rgb(0, 183, 255);
 }
 
 #searchNavigation button {

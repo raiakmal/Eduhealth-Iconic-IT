@@ -1,136 +1,140 @@
-//Search
-let currentHighlightIndex = -1;
-let highlights = [];
-
-function toggleClearButton() {
+document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('searchInput');
-  const clearButton = document.getElementById('clearSearch');
-  if (searchInput.value.length > 0) {
-    clearButton.classList.remove('hidden');
-  } else {
-    clearButton.classList.add('hidden');
-  }
-}
+  const clearSearch = document.getElementById('clearSearch');
+  const searchIcon = document.getElementById('searchIcon');
+  const searchNavigation = document.getElementById('searchNavigation');
+  const prevButton = document.getElementById('prevButton');
+  const nextButton = document.getElementById('nextButton');
 
-function clearSearch() {
-  const searchInput = document.getElementById('searchInput');
-  searchInput.value = '';
-  toggleClearButton();
-  clearHighlights();
-}
+  let currentIndex = -1;
+  let matches = [];
 
-function searchAndHighlight() {
-  const searchTerm = document.getElementById('searchInput').value.trim();
-  if (searchTerm.length < 1) {
+  function performSearch() {
+    const searchTerm = searchInput.value.trim().toLowerCase();
+    if (searchTerm === '') {
+      clearHighlights();
+      return;
+    }
+
     clearHighlights();
-    return;
+    highlightMatches(searchTerm);
+    updateNavigation();
   }
 
-  clearHighlights();
-  const regex = new RegExp(`\\b${escapeRegExp(searchTerm)}\\b`, 'gi');
-  const textNodes = getTextNodes(document.body);
-
-  textNodes.forEach((node) => {
-    const text = node.textContent;
-    let match;
-    while ((match = regex.exec(text)) !== null) {
-      const range = document.createRange();
-      range.setStart(node, match.index);
-      range.setEnd(node, match.index + match[0].length);
-      const span = document.createElement('span');
-      span.className = 'highlight';
-      range.surroundContents(span);
-      highlights.push(span);
-    }
-  });
-
-  if (highlights.length > 0) {
-    document.getElementById('searchNavigation').classList.remove('hidden');
-    navigateToNearestHighlight();
-  } else {
-    document.getElementById('searchNavigation').classList.add('hidden');
-  }
-}
-
-function getTextNodes(node) {
-  let textNodes = [];
-  if (node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '') {
-    textNodes.push(node);
-  } else {
-    node.childNodes.forEach((child) => {
-      textNodes = textNodes.concat(getTextNodes(child));
+  function clearHighlights() {
+    document.body.normalize();
+    document.querySelectorAll('.highlight, .current-highlight').forEach(highlight => {
+      const parent = highlight.parentNode;
+      parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
+      parent.normalize();
     });
+    matches = [];
+    currentIndex = -1;
   }
-  return textNodes;
-}
 
-function clearHighlights() {
-  highlights.forEach((highlight) => {
-    const parent = highlight.parentNode;
-    parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
-    parent.normalize();
+  function highlightMatches(searchTerm) {
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+    let node;
+    const regex = new RegExp(searchTerm, 'gi');
+
+    while (node = walker.nextNode()) {
+      const parent = node.parentNode;
+      if (parent.nodeName !== 'SCRIPT' && parent.nodeName !== 'STYLE') {
+        let content = node.textContent;
+        let match;
+        while (match = regex.exec(content)) {
+          const range = document.createRange();
+          range.setStart(node, match.index);
+          range.setEnd(node, match.index + searchTerm.length);
+          const highlight = document.createElement('span');
+          highlight.className = 'highlight';
+          range.surroundContents(highlight);
+          matches.push(highlight);
+          walker.currentNode = highlight.nextSibling;
+        }
+      }
+    }
+  }
+
+  function updateNavigation() {
+    if (matches.length > 0) {
+      searchNavigation.classList.remove('hidden');
+      navigateToClosestMatch();
+    } else {
+      searchNavigation.classList.add('hidden');
+    }
+  }
+
+  function navigateToClosestMatch() {
+    const viewportTop = window.pageYOffset;
+    const viewportBottom = viewportTop + window.innerHeight;
+    let closestMatch = null;
+    let closestDistance = Infinity;
+
+    matches.forEach((match, index) => {
+      const rect = match.getBoundingClientRect();
+      const matchMiddle = rect.top + window.pageYOffset + rect.height / 2;
+      const distance = Math.abs(matchMiddle - (viewportTop + window.innerHeight / 2));
+
+      if (distance < closestDistance) {
+        closestMatch = match;
+        closestDistance = distance;
+        currentIndex = index;
+      }
+    });
+
+    if (closestMatch) {
+      if (currentIndex !== -1) {
+        matches[currentIndex].classList.remove('current-highlight');
+        matches[currentIndex].classList.add('highlight');
+      }
+      closestMatch.classList.remove('highlight');
+      closestMatch.classList.add('current-highlight');
+      closestMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  function navigateToMatch(index) {
+    if (currentIndex !== -1) {
+      matches[currentIndex].classList.remove('current-highlight');
+      matches[currentIndex].classList.add('highlight');
+    }
+    currentIndex = index;
+    const current = matches[currentIndex];
+    current.classList.remove('highlight');
+    current.classList.add('current-highlight');
+    current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  searchIcon.addEventListener('click', performSearch);
+
+  clearSearch.addEventListener('click', () => {
+    searchInput.value = '';
+    clearSearch.style.display = 'none';
+    clearHighlights();
+    searchNavigation.classList.add('hidden');
   });
-  highlights = [];
-  currentHighlightIndex = -1;
-  document.getElementById('searchNavigation').classList.add('hidden');
-}
 
-function navigateToNearestHighlight() {
-  if (highlights.length === 0) return;
-
-  const navbar = document.getElementById('navbar');
-  const navbarRect = navbar.getBoundingClientRect();
-  const navbarBottom = navbarRect.bottom;
-
-  let nearestIndex = 0;
-  let nearestDistance = Infinity;
-
-  highlights.forEach((highlight, index) => {
-    const rect = highlight.getBoundingClientRect();
-    const distance = Math.abs(rect.top - navbarBottom);
-    if (distance < nearestDistance && rect.top > navbarBottom) {
-      nearestDistance = distance;
-      nearestIndex = index;
+  prevButton.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      navigateToMatch(currentIndex - 1);
+    } else {
+      navigateToMatch(matches.length - 1);
     }
   });
 
-  currentHighlightIndex = nearestIndex;
-  focusHighlight(currentHighlightIndex);
-}
+  nextButton.addEventListener('click', () => {
+    if (currentIndex < matches.length - 1) {
+      navigateToMatch(currentIndex + 1);
+    } else {
+      navigateToMatch(0);
+    }
+  });
 
-function navigateHighlight(direction) {
-  if (highlights.length === 0) return;
-
-  currentHighlightIndex += direction;
-
-  if (currentHighlightIndex >= highlights.length) {
-    currentHighlightIndex = 0;
-  } else if (currentHighlightIndex < 0) {
-    currentHighlightIndex = highlights.length - 1;
-  }
-
-  focusHighlight(currentHighlightIndex);
-}
-
-function focusHighlight(index) {
-  highlights.forEach((h) => h.classList.remove('current-highlight'));
-  const currentHighlight = highlights[index];
-  currentHighlight.classList.add('current-highlight');
-  currentHighlight.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
-
-function escapeRegExp(string) {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-// Tambahkan Event Listener
-document.getElementById('searchInput').addEventListener('input', toggleClearButton);
-document.getElementById('clearSearch').addEventListener('click', clearSearch);
-document.getElementById('searchIcon').addEventListener('click', searchAndHighlight);
-document.getElementById('prevButton').addEventListener('click', () => navigateHighlight(-1));
-document.getElementById('nextButton').addEventListener('click', () => navigateHighlight(1));
-
-
+  searchInput.addEventListener('input', () => {
+    clearSearch.style.display = searchInput.value ? 'block' : 'none';
+  });
+});
 // Jam
 function updateTime() {
   const timeDisplay = document.getElementById('time');
@@ -407,3 +411,6 @@ window.addEventListener('resize', () => {
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
+
+
+
