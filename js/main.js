@@ -1,3 +1,27 @@
+// Jam
+function updateTime() {
+  const timeDisplay = document.getElementById('time');
+  const ampmDisplay = document.getElementById('ampm').querySelector('sup');
+  const now = new Date();
+  let hours = now.getHours();
+  const minutes = now.getMinutes();
+  const isAm = hours < 12 || hours === 24;
+  if (hours === 0) {
+    hours = 12;
+  } else if (hours > 12) {
+    hours -= 12;
+  }
+  const formattedHours = hours < 10 ? '0' + hours : hours;
+  const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+  const timeString = `${formattedHours}.${formattedMinutes}`;
+  const ampmString = isAm ? 'AM' : 'PM';
+  timeDisplay.textContent = timeString;
+  ampmDisplay.textContent = ampmString;
+}
+
+setInterval(updateTime, 1000);
+updateTime();
+
 //Search
 let currentHighlightIndex = -1;
 let highlights = [];
@@ -235,30 +259,6 @@ document.getElementById('sistem-organ').addEventListener('change', function () {
     }
   }
 });
-
-// Jam
-function updateTime() {
-  const timeDisplay = document.getElementById('time');
-  const ampmDisplay = document.getElementById('ampm').querySelector('sup');
-  const now = new Date();
-  let hours = now.getHours();
-  const minutes = now.getMinutes();
-  const isAm = hours < 12 || hours === 24;
-  if (hours === 0) {
-    hours = 12;
-  } else if (hours > 12) {
-    hours -= 12;
-  }
-  const formattedHours = hours < 10 ? '0' + hours : hours;
-  const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-  const timeString = `${formattedHours}.${formattedMinutes}`;
-  const ampmString = isAm ? 'AM' : 'PM';
-  timeDisplay.textContent = timeString;
-  ampmDisplay.textContent = ampmString;
-}
-
-setInterval(updateTime, 1000);
-updateTime();
 
 // Toggle Dark Mode
 const themeToggleButton = document.getElementById('theme-toggle-button');
