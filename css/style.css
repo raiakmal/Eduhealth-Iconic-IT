@@ -52,10 +52,12 @@ ul {
     align-items: center;
 }
 
-.mnav {
+.mnav,.navbar-default {
     z-index: 999;
     background-color: white;
 }
+
+
 
 /* Pastikan Hero Section tidak menutupi */
 .bg-hero {
